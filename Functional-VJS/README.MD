@@ -235,8 +235,6 @@ const BlogPost = (postData)=> {
 
 ```
 
-
-
 ## Summary
 
 is type of code is far easier to write and maintain than jQuery spaghetti, and there's no hurdle at all to using it right now. Everything we've talked about here comes free with all reasonably modern browsers, without so much as a library.
