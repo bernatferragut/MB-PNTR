@@ -38,7 +38,9 @@ perimeter(rectangle); // 10
  If you can make your **HTML** (***rectangle***) a **function of your data** (***single sourde of truth***), then you only have to worry about **modifying data** - not DOM - and the way it gets rendered on the page will be implicit.
 
 
-## UI Compponents as Functions
+## UI Components as Functions
+
+> Variables (or any JavaScript expression, including function calls!) can be inserted directly into the string if they're wrapped in ***${ }***:
 
 ```javascript
 let blogPost = {
