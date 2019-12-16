@@ -202,7 +202,7 @@ setInterval(update, 1000);
 ***No for-loops, just a list of objects converted to a list of HTML 
 elements.***
 
-## Adding Classes
+## Adding Classes - Part 5
 
 ```javascript
 function BlogPost(postData) {
@@ -216,7 +216,7 @@ function BlogPost(postData) {
 }
 ```
 
-## Adding HTML attributes
+## Adding HTML attributes - Part 6
 
 ```javascript
 
