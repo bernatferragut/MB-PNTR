@@ -1,15 +1,18 @@
-// ON LOAD
-console.log('CONNECTED')
+// 1. ON LOAD
+window.onload = () => console.log('CONNECTED');
 
-// BODY
-let message =  document.querySelector('.app');
+// 2. DATA OBJECT
+let data = {
+    title : 'MAIN TITLE',
+    subTitle : 'SUB TITLE'
+}
 
-console.log (message);
+// 3. RENDER TITLE
+function Title(data) {
+    return `
+    <h1>${data.title}</h1>
+    `
+}
 
-let messageContent = 'CONTENT';
-
-message.innerHTML = `<pre>${messageContent}</pre>`;
-
-
-
-
+// 4. HTML INJECTION
+document.querySelector('.app').innerHTML = Title(data);

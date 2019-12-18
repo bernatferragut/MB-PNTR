@@ -13,14 +13,5 @@ body, button, input {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
     background-color: var(--main-bg-color);
-    margin: 0;
-}
-
-#title {
-    font-size: 14px;
-    letter-spacing: 20px;
-}
-
-pre {
-    color: greenyellow;
+    margin: 10px;
 }
