@@ -10,11 +10,11 @@ let data = {
 // TITLE
 function Title(data) {
     return `
-    <h1>${data.title}</h1>
+    <h1 class="fadeIn">${data.title}</h1>
     `
 }
 
-// MAIN CONTENT
+// MAIN CONTENT,
 function Content(data) {
     return `
     ${Title(data)}
