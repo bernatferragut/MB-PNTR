@@ -1,0 +1,26 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+
+/* VARIABLES */
+:root {
+    --main-bg-color: #101010;
+    --main-text-color: greenyellow;
+  }
+
+/* CSS */
+body, button, input {
+    color: var(--main-text-color);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    background-color: var(--main-bg-color);
+    margin: 0;
+}
+
+#title {
+    font-size: 14px;
+    letter-spacing: 20px;
+}
+
+pre {
+    color: greenyellow;
+}
