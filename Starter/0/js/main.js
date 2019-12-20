@@ -73,7 +73,14 @@ microBit.onConnect(function(){
     data.paired = true;
     console.log(data.paired);
     
-    if(data.paired == true) {}
+    if(data.paired == true) {
+        // get button and apply fadeout
+        // get div and append H1 - Connected
+        // for a specific time and fade out
+        // fadeIn x,y,z values 
+        // when buttons a/b blink
+        // add canvas to start drawing 
+    }
 
     // HTML
     // document.getElementById("connected").innerHTML="true";
