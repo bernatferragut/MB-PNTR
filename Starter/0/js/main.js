@@ -31,7 +31,7 @@ function PairButton(data) {
     <div class="flex-container fadeIn">
         <button 
             class="btn" 
-            onclick="microBit.onConnect()">
+            onclick="searchDevice()">
             ${data.PairButtonText}
         </button>
     </div>
@@ -50,8 +50,26 @@ function Content(data) {
 document.querySelector('.app').innerHTML = Content(data);
 
 // 5. MICROBIT
-microBit.onConnect(function() {
-    console.log('CONNECTED!')
-});
+// SEARCH DEVICE
+function searchDevice(){
+    console.log('...searching device')
+    microBit.searchDevice();
+}
 
+// ON CONNECTED
+microBit.onConnect(function(){
+    // HTML
+    // document.getElementById("connected").innerHTML="true";
+    // document.getElementById("properties").classList.toggle('inactive');
+    console.log("connected");
+
+    // Buttons
+    microBit.setButtonACallback(function(){
+        console.log("buttonA pressed");
+    });
+
+    microBit.setButtonBCallback(function(){
+        console.log("buttonB pressed");
+    });
+});
 

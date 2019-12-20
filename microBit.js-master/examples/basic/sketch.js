@@ -19,6 +19,10 @@ var iconRight = [
 // new microbit creation
 microBit=new uBit();
 
+function searchDevice(){
+  microBit.searchDevice();
+}
+
 microBit.onConnect(function(){
   console.log("connected");
   // HTML
@@ -40,10 +44,6 @@ microBit.onDisconnect(function(){
   // HTML
   document.getElementById("connected").innerHTML="false";
 });
-
-function searchDevice(){
-  microBit.searchDevice();
-}
 
 // We get the microbit services characteristics information
 microBit.onBleNotify(function(){
