@@ -10,7 +10,9 @@ let data = {
     PairButtonText : 'PAIR MICROBIT',
     pairButtonCall : function() {
         console.log('PAIRED!');
-    }
+    },
+    pairSuccessText : 'MICROBIT PAIRED',
+    paired : false,
 }
 // MICROBIT DATA
 let microBit = new uBit();
@@ -37,6 +39,15 @@ function PairButton(data) {
     </div>
     `
 }
+
+// PAIR-CONNECTION SUCCESS
+function Success(data) {
+    return `
+    <div class"flex-container fedeIn">
+        <h1>${data.pairSuccessText}</h1>
+    </div>
+    `
+}
 // MAIN CONTENT,
 function Content(data) {
     return `
@@ -58,6 +69,12 @@ function searchDevice(){
 
 // ON CONNECTED
 microBit.onConnect(function(){
+    // Paired
+    data.paired = true;
+    console.log(data.paired);
+    
+    if(data.paired == true) {}
+
     // HTML
     // document.getElementById("connected").innerHTML="true";
     // document.getElementById("properties").classList.toggle('inactive');
