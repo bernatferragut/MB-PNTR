@@ -61,7 +61,7 @@ microBit.onConnect(function(){
     // HTML
     // document.getElementById("connected").innerHTML="true";
     // document.getElementById("properties").classList.toggle('inactive');
-    console.log("connected");
+    console.log("microbit connected!");
 
     // Buttons
     microBit.setButtonACallback(function(){
