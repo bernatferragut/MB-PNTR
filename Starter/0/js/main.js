@@ -1,7 +1,13 @@
 // 1. ON LOAD
-window.onload = () => console.log('...JS working...');
+window.onload = () => {
+    console.log('1.js-activated!');
+}
 
-// 2. DATA OBJECT
+// 1.1 MICROBIT OBJECT
+let microBit = new uBit();
+console.log(microBit);
+
+// 2. DATA OBJECTS
 let data = {
     title : 'S°K°E°T°C°H',
     PairButtonText : 'PAIR MICROBIT',
@@ -25,7 +31,7 @@ function PairButton(data) {
     <div class="flex-container fadeIn">
         <button 
             class="btn" 
-            onclick="data.pairButtonCall()">
+            onclick="microBit.onConnect()">
             ${data.PairButtonText}
         </button>
     </div>
@@ -43,3 +49,7 @@ function Content(data) {
 // 4. HTML INJECTION
 document.querySelector('.app').innerHTML = Content(data);
 
+// 5. MICROBIT
+microBit.onConnect(function() {
+    console.log('CONNECTED!')
+});
