@@ -3,11 +3,8 @@ window.onload = () => {
     console.log('1.js-activated!');
 }
 
-// 1.1 MICROBIT OBJECT
-let microBit = new uBit();
-console.log(microBit);
-
 // 2. DATA OBJECTS
+// GENERAL DATA
 let data = {
     title : 'S°K°E°T°C°H',
     PairButtonText : 'PAIR MICROBIT',
@@ -15,6 +12,9 @@ let data = {
         console.log('PAIRED!');
     }
 }
+// MICROBIT DATA
+let microBit = new uBit();
+console.log(microBit);
 
 // 3. RENDER FUNCTIONS
 // TITLE
@@ -53,3 +53,5 @@ document.querySelector('.app').innerHTML = Content(data);
 microBit.onConnect(function() {
     console.log('CONNECTED!')
 });
+
+
