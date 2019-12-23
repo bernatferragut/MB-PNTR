@@ -194,10 +194,10 @@ class uBit {
 
     //ACCELEROMETER CHARACTERISTIC
     if (event.target.uuid == ACCEL_DATA) {
-      //true is for reading the bits as little-endian
-      //console.log("ACCEL_DATA_X", event.target.value.getInt16(0,true));
-      //console.log("ACCEL_DATA_Y", event.target.value.getInt16(2,true));
-      //console.log("ACCEL_DATA_Z", event.target.value.getInt16(4,true));
+      // true is for reading the bits as little-endian
+      // console.log("ACCEL_DATA_X", event.target.value.getInt16(0,true));
+      // console.log("ACCEL_DATA_Y", event.target.value.getInt16(2,true));
+      // console.log("ACCEL_DATA_Z", event.target.value.getInt16(4,true));
       this.accelerometer.x = event.target.value.getInt16(0, true);
       this.accelerometer.y = event.target.value.getInt16(2, true);
       this.accelerometer.z = event.target.value.getInt16(4, true);
@@ -228,7 +228,7 @@ class uBit {
   }
 
   searchDevice() {
-    filters: []
+    filters: ['BBC micr:bit']
     var options = {};
     options.acceptAllDevices = true;
     options.optionalServices = [ACCEL_SRV, MAGNETO_SRV, BTN_SRV, IO_PIN_SRV, LED_SRV, TEMP_SRV];

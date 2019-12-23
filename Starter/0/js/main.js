@@ -1,12 +1,12 @@
 // 0. MICROBIT DATA
 let microBit = new uBit();
 console.log('microbit data: ', microBit);
-
+// IS YOUR BROWSER BLUETOOTH ENABLED?
+// microBit.isWebBluetoothEnabled();
 // 1. ON LOAD
 window.onload = () => {
     console.log('1.js-activated!');
 }
-
 // 2. DATA OBJECTS
 // GENERAL DATA
 let data = {
@@ -18,12 +18,11 @@ let data = {
         x:0,
         y:0,
         z:0,
-        btnA:true,
+        btnA:false,
         btnB:false,
         btnAB:false
     }
 }
-
 // 3. RENDER FUNCTIONS
 // TITLE1
 function Title1(data) {
@@ -47,11 +46,11 @@ function PairButton(data) {
 }
 // BUTTON ACTION
 function searchDevice(){
+    searchMicrobit();
     console.log('...searching device')
     data.paired = true;
     Content(data);
     Render();
-    //microBit.searchDevice();
 }
 // TITLE2
 function Title2(data) {
@@ -65,13 +64,13 @@ function Title2(data) {
 function mbData() {
     return `
     <div id="mbData" class="flex-container fadeIn">
-        <h3>${data.mbData.btnA}</h3>
-        <ul>
-            <li>${data.mbData.x}</li>
-            <li>${data.mbData.y}</li>
-            <li>${data.mbData.z}</li>
-        </ul>
-        <h3>${data.mbData.btnB}</h3>
+        <div class="grid-container" >
+            <p id="btnA"></p>
+            <p id="accX"></p>
+            <p id="accY"></p>
+            <p id="accZ"></p>
+            <p id="btnB"></p>
+        </div>
     </div>
     `
 }
@@ -104,33 +103,38 @@ function Content(data) {
 function Render() {
     return document.querySelector('.app').innerHTML = Content(data);
 }
-
 // PROGRAM
 Render();
 
-
-
-
-
 //------------------
-// MICROBIT : SEARCH
-
+// SEARCH MICROBIT
+function searchMicrobit(){
+    microBit.searchDevice();
+  }
 // ON CONNECTED
 microBit.onConnect(function(){
     // Paired
-    data.paired = true;
     console.log('microbit paired: ', data.paired);
+      // Buttons
+    microBit.setButtonACallback(function(){
+    console.log("buttonA pressed");
+    });
 
-    Content(data);
-
-    document.querySelector('.app').innerHTML = Content(data);
+    microBit.setButtonBCallback(function(){
+    console.log("buttonB pressed");
+    });
 })
-
 // BLE SUBSCRIBE SERVICE
 microBit.onBleNotify(function(){
-    data.paired = true;
-
-    mbData();
+    console.log( `subscribing to:
+        btnA, accX, accY, accZ, btnB
+    `)
+    document.getElementById("btnA").innerHTML=`A: ${microBit.getButtonA()}`;
+    document.getElementById("accX").innerHTML=`x: ${microBit.getAccelerometer().x}`;
+    document.getElementById("accY").innerHTML=`y: ${microBit.getAccelerometer().y}`;
+    document.getElementById("accZ").innerHTML=`z: ${microBit.getAccelerometer().z}`;
+    document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()}`;
+    // document.getElementById("btnAB").innerHTML=microBit.getButtonAB();
 
 })
 
