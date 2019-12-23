@@ -74,7 +74,7 @@ class uBit {
   getBearing() {
     return this.magnetometer_bearing;
   }
-
+// BTN A
   getButtonA() {
     return this.buttonA;
   }
@@ -83,6 +83,7 @@ class uBit {
     this.buttonACallBack=callbackFunction;
   }
 
+  // BTN B
   getButtonB() {
     return this.buttonB;
   }

@@ -1,8 +1,6 @@
 // 0. MICROBIT DATA
 let microBit = new uBit();
 console.log('microbit data: ', microBit);
-// IS YOUR BROWSER BLUETOOTH ENABLED?
-// microBit.isWebBluetoothEnabled();
 // 1. ON LOAD
 window.onload = () => {
     console.log('1.js-activated!');
@@ -88,6 +86,7 @@ function Content(data) {
 
     if(data.paired == true) {
         return `
+        
         ${Title2(data)}
         ${mbData()}
         ${CreateCanvas()}
@@ -113,29 +112,28 @@ function searchMicrobit(){
   }
 // ON CONNECTED
 microBit.onConnect(function(){
-    // Paired
-    console.log('microbit paired: ', data.paired);
-      // Buttons
-    microBit.setButtonACallback(function(){
-    console.log("buttonA pressed");
-    });
 
-    microBit.setButtonBCallback(function(){
-    console.log("buttonB pressed");
+    microBit.setButtonACallback(function(){
+        console.log("buttonA pressed");
+        document.getElementById('btnA').innerHTML = 1;
     });
+    
+    microBit.setButtonBCallback(function(){
+        console.log("buttonB pressed");
+        document.getElementById('btnB').innerHTML = 1;
+        });
 })
 // BLE SUBSCRIBE SERVICE
 microBit.onBleNotify(function(){
     console.log( `subscribing to:
         btnA, accX, accY, accZ, btnB
     `)
-    document.getElementById("btnA").innerHTML=`A: ${microBit.getButtonA()}`;
+    document.getElementById("btnA").innerHTML=`A: ${microBit.getButtonA()? 1 : 0}`;
     document.getElementById("accX").innerHTML=`x: ${microBit.getAccelerometer().x}`;
     document.getElementById("accY").innerHTML=`y: ${microBit.getAccelerometer().y}`;
     document.getElementById("accZ").innerHTML=`z: ${microBit.getAccelerometer().z}`;
-    document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()}`;
+    document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()? 1 : 0}`;
     // document.getElementById("btnAB").innerHTML=microBit.getButtonAB();
-
 })
 
 
