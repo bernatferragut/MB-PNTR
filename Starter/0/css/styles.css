@@ -64,6 +64,18 @@ canvas {
    grid-gap: 5px;
 }
 
+/* #accX {
+   color : red;
+}
+
+#accY {
+   color : greenyellow;
+}
+
+#accZ {
+   color : yellow;
+} */
+
   /* FADE IN  DESIGN */
 @-webkit-keyframes fadeIn {
    0% {opacity: 0;} to {opacity: 1;}

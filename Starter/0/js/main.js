@@ -106,35 +106,32 @@ function Render() {
 Render();
 
 //------------------
+
 // SEARCH MICROBIT
 function searchMicrobit(){
     microBit.searchDevice();
   }
+
 // ON CONNECTED
 microBit.onConnect(function(){
-
-    microBit.setButtonACallback(function(){
-        console.log("buttonA pressed");
-        document.getElementById('btnA').innerHTML = 1;
-    });
-    
-    microBit.setButtonBCallback(function(){
-        console.log("buttonB pressed");
-        document.getElementById('btnB').innerHTML = 1;
-        });
+    console.log("connected");
+    data.paired = true;
 })
+// ON DISCONNECT
+microBit.onDisconnect(function(){
+    console.log("disconnected");
+  });
 // BLE SUBSCRIBE SERVICE
 microBit.onBleNotify(function(){
     console.log( `subscribing to:
         btnA, accX, accY, accZ, btnB
     `)
-    document.getElementById("btnA").innerHTML=`A: ${microBit.getButtonA()? 1 : 0}`;
+    // document.getElementById("btnA").innerHTML=`A: ${microBit.getButtonA()}`;
     document.getElementById("accX").innerHTML=`x: ${microBit.getAccelerometer().x}`;
     document.getElementById("accY").innerHTML=`y: ${microBit.getAccelerometer().y}`;
     document.getElementById("accZ").innerHTML=`z: ${microBit.getAccelerometer().z}`;
-    document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()? 1 : 0}`;
+    // document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()}`;
     // document.getElementById("btnAB").innerHTML=microBit.getButtonAB();
 })
-
 
 
