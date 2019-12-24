@@ -49,6 +49,7 @@ function searchDevice(){
     data.paired = true;
     Content(data);
     Render();
+    startCanvas();
 }
 // TITLE2
 function Title2(data) {
@@ -74,10 +75,10 @@ function mbData() {
 }
 // CANVAS CREATION
 function CreateCanvas() {
-    console.log('Canvas loaded')
+    console.log('canvas loaded')
     return`
     <div class="flex-container fadeIn">
-        <canvas></canvas>
+        <canvas id="canvas"></canvas>
     </div>
     `
 }
@@ -86,7 +87,6 @@ function Content(data) {
 
     if(data.paired == true) {
         return `
-        
         ${Title2(data)}
         ${mbData()}
         ${CreateCanvas()}
@@ -137,5 +137,37 @@ microBit.onBleNotify(function(){
 
 // CANVAS PROGRAMMING
 
+function startCanvas() {
 
+    // vars
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    // animation Loop
+    let requestAnimationFrame = window.requestAnimationFrame;
+    // canvas
+    let canvas = document.querySelector('#canvas');
+    let ctx = canvas.getContext('2d');
+    // resize
+    canvas.addEventListener('resize', resizeCanvas);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+    // animation
+    function drawDot() {
+        // color
+        ctx.fillStyle = 'greenyellow';
+        // clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // draw square dot
+        let x = microBit.getAccelerometer().x;
+        let y = microBit.getAccelerometer().y;
+        ctx.fillRect(x, y, 10, 10);
+        // loop and redraw
+        requestAnimationFrame(drawDot);
+    }
+    drawDot();
+}
 
