@@ -133,5 +133,9 @@ microBit.onBleNotify(function(){
     // document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()}`;
     // document.getElementById("btnAB").innerHTML=microBit.getButtonAB();
 })
+//-------------------
+
+// CANVAS PROGRAMMING
+
 
 
