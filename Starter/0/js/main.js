@@ -136,17 +136,16 @@ microBit.onBleNotify(function(){
 //-------------------
 
 // CANVAS PROGRAMMING
-
 function startCanvas() {
 
     // vars
     let w = window.innerWidth;
     let h = window.innerHeight;
-    // animation Loop
+    // requestAnimationFrame for creating Loop
     let requestAnimationFrame = window.requestAnimationFrame;
     // canvas
     let canvas = document.querySelector('#canvas');
-    let ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d', {alpha : false});
     // resize
     canvas.addEventListener('resize', resizeCanvas);
     function resizeCanvas() {
@@ -154,20 +153,21 @@ function startCanvas() {
         canvas.height = window.innerHeight;
     }
     resizeCanvas();
-
     // animation
-    function drawDot() {
+    function drawCanvas() {
         // color
         ctx.fillStyle = 'greenyellow';
+        ctx.globalAlpha = 1;
         // clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         // draw square dot
         let x = microBit.getAccelerometer().x;
         let y = microBit.getAccelerometer().y;
+        // ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(x, y, 10, 10);
-        // loop and redraw
-        requestAnimationFrame(drawDot);
+        // loop and redraw Canvas
+        requestAnimationFrame(drawCanvas);
     }
-    drawDot();
+    drawCanvas();
 }
 

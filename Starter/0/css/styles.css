@@ -41,8 +41,8 @@ h1 {
 /* FLEX */
 .flex-container {
    display: flex;
-   justify-content: center;
    align-items: center; 
+   justify-content: center;
    flex-direction: column;
    max-height: auto;
 }
@@ -59,9 +59,9 @@ canvas {
 
 .grid-container {
    display: grid;
-   grid-template-columns: repeat(5, [col] 80px ) ;
-   grid-template-rows: repeat(2, [row] auto  );
-   grid-gap: 5px;
+   grid-template-columns: repeat(5, 1fr ) ;
+   /* grid-template-rows: repeat(2, [row] auto  ); */
+   grid-gap: 20px;
 }
 
 /* #accX {
