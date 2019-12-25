@@ -47,8 +47,11 @@ function searchDevice(){
     searchMicrobit();
     console.log('...searching device')
     data.paired = true;
+    // Gathering all the HTML strings
     Content(data);
+    // Rendering the Conent to HTML
     Render();
+    // Start the Canvas
     startCanvas();
 }
 // TITLE2
