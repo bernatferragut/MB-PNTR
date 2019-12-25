@@ -158,16 +158,31 @@ function startCanvas() {
     resizeCanvas();
     // animation
     function drawCanvas() {
-        // color
-        ctx.fillStyle = 'greenyellow';
+        // global transparency
         ctx.globalAlpha = 1;
-        // clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         // draw square dot
         let x = microBit.getAccelerometer().x;
         let y = microBit.getAccelerometer().y;
-        // ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillRect(x, y, 10, 10);
+
+        // Square
+        // ctx.fillStyle = 'greenyellow';
+        // ctx.fillRect(x, y, 10, 10);
+
+        // Background
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Line
+        // ctx.style.opacity = '0.5';
+        ctx.strokeStyle = 'greenyellow';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round'
+
+        ctx.lineTo(x,y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+
         // loop and redraw Canvas
         requestAnimationFrame(drawCanvas);
     }
