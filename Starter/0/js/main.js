@@ -189,3 +189,33 @@ function startCanvas() {
     drawCanvas();
 }
 
+
+/* TO DO
+
+1 - IMPLEMENTATION OF 2 FUNCTIONS:
+1.1 - P5JS MAP FUNCTION
+
+p5.prototype.map
+
+> use p5js function by importing the p5 implementation of it
+
+1.2 - P5JS PERLIN NOISE FUNCTION
+p5.prototype.noise 
+
+> use p5js function by importing the p5 implementation of it
+
+2- ADD BUTTONS
+. DRAW
+. ERASE
+. SAVE
+. LOAD
+. 1.3.5 DOT BRUSH
+. CIRCULAR MOTION - SPEED
+. BG TRANSPARENCY
+
+
+3- WEB GAZER JS
+
+Implement the eye movement control of the drawing with this library
+
+*/
