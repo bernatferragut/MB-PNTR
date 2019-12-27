@@ -55,6 +55,7 @@ canvas {
    border-color: var(--main-text-color);
    padding: 10px 10px 10px;
    margin: 15px;
+   /* background : var(--main-bg-color); */
 }
 
 .grid-container {
@@ -95,6 +96,32 @@ canvas {
 
    animation-duration: 0.7s;
    -webkit-animation-duration: 0.7s;
+}
+
+.fadeIn2 {
+   opacity:0;
+
+   animation: fadeIn ease-in 1;
+   -webkit-animation: fadeIn ease-in 1;
+
+   animation-fill-mode: forwards;
+   -webkit-animation-fill-mode: forwards;
+
+   animation-duration: 1.7s;
+   -webkit-animation-duration: 1.7s;
+}
+
+.fadeIn3 {
+   opacity:0;
+
+   animation: fadeIn ease-in 1;
+   -webkit-animation: fadeIn ease-in 1;
+
+   animation-fill-mode: forwards;
+   -webkit-animation-fill-mode: forwards;
+
+   animation-duration: 2.7s;
+   -webkit-animation-duration: 2.7s;
 }
 
 .fadeOut {

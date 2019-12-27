@@ -33,7 +33,7 @@ function Title1(data) {
 // PAIR BUTTON
 function PairButton(data) {
     return `
-    <div class="flex-container fadeIn">
+    <div class="flex-container fadeIn2">
         <button 
             class="btn" 
             onclick="searchDevice()">
@@ -65,7 +65,7 @@ function Title2(data) {
 // MB DATA
 function mbData() {
     return `
-    <div id="mbData" class="flex-container fadeIn">
+    <div id="mbData" class="flex-container fadeIn2">
         <div class="grid-container" >
             <p id="btnA"></p>
             <p id="accX"></p>
@@ -80,7 +80,7 @@ function mbData() {
 function CreateCanvas() {
     console.log('canvas loaded')
     return`
-    <div class="flex-container fadeIn">
+    <div class="flex-container fadeIn3">
         <canvas id="canvas"></canvas>
     </div>
     `
@@ -155,25 +155,23 @@ function startCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
+
     resizeCanvas();
+
+    // Background Color
+     ctx.fillStyle = "#101010";
+     ctx.fillRect(0, 0, canvas.width , canvas.height);
+
     // animation
     function drawCanvas() {
         // global transparency
-        ctx.globalAlpha = 1;
+        ctx.globalAlpha = 0.1;
 
-        // draw square dot
+        // accelerometer data
         let x = microBit.getAccelerometer().x;
         let y = microBit.getAccelerometer().y;
 
-        // Square
-        // ctx.fillStyle = 'greenyellow';
-        // ctx.fillRect(x, y, 10, 10);
-
-        // Background
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Line
-        // ctx.style.opacity = '0.5';
+        // line creation
         ctx.strokeStyle = 'greenyellow';
         ctx.lineWidth = 2;
         ctx.lineCap = 'round'
