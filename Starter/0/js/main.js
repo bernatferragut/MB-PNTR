@@ -214,6 +214,7 @@ p5.prototype.noise
 > use p5js function by importing the p5 implementation of it
 
 2- ADD BUTTONS
+. Z Control - Depth
 . DRAW
 . ERASE
 . SAVE
