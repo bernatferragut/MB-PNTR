@@ -171,21 +171,32 @@ function startCanvas() {
         let x = microBit.getAccelerometer().x;
         let y = microBit.getAccelerometer().y;
 
+        // mapping acceleration to canvas dimensions
+        // changing the -1024/1024 range change the graphics significantly
+        let mx = mapValues(x,-1024,1024,0,canvas.width);
+        let my = mapValues(y,-1024,1024,0,canvas.height);
+
         // line creation
         ctx.strokeStyle = 'greenyellow';
         ctx.lineWidth = 2;
         ctx.lineCap = 'round'
 
-        ctx.lineTo(x,y);
+        ctx.lineTo(mx,my);
         ctx.stroke();
         ctx.beginPath();
-        ctx.moveTo(x,y);
+        ctx.moveTo(mx,my);
 
         // loop and redraw Canvas
         requestAnimationFrame(drawCanvas);
     }
     drawCanvas();
 }
+
+// HELPERS
+
+function mapValues (n, start1, stop1, start2, stop2) {
+    return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
+  };
 
 
 /* TO DO
@@ -215,5 +226,9 @@ p5.prototype.noise
 3- WEB GAZER JS
 
 Implement the eye movement control of the drawing with this library
+
+Gettin Shake acceleration option
+
+acceleration = math.sqrt(x**2 + y**2 + z**2)
 
 */

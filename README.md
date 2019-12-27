@@ -8,3 +8,6 @@
 
 ## 3. Building our Skeleton for the Project
 > WIP
+
+## 4. Microbit accelerometer
+[microbit](https://microbit-challenges.readthedocs.io/en/latest/tutorials/accelerometer.html)
