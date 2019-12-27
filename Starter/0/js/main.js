@@ -67,11 +67,9 @@ function mbData() {
     return `
     <div id="mbData" class="flex-container fadeIn2">
         <div class="grid-container" >
-            <p id="btnA"></p>
             <p id="accX"></p>
             <p id="accY"></p>
             <p id="accZ"></p>
-            <p id="btnB"></p>
         </div>
     </div>
     `
@@ -134,7 +132,6 @@ microBit.onBleNotify(function(){
     document.getElementById("accY").innerHTML=`y: ${microBit.getAccelerometer().y}`;
     document.getElementById("accZ").innerHTML=`z: ${microBit.getAccelerometer().z}`;
     // document.getElementById("btnB").innerHTML=`B: ${microBit.getButtonB()}`;
-    // document.getElementById("btnAB").innerHTML=microBit.getButtonAB();
 })
 //-------------------
 
@@ -165,7 +162,7 @@ function startCanvas() {
     // animation
     function drawCanvas() {
         // global transparency
-        ctx.globalAlpha = 0.1;
+        ctx.globalAlpha = 0.25;
 
         // accelerometer data
         let x = microBit.getAccelerometer().x;
@@ -173,8 +170,8 @@ function startCanvas() {
 
         // mapping acceleration to canvas dimensions
         // changing the -1024/1024 range change the graphics significantly
-        let mx = mapValues(x,-1024,1024,0,canvas.width);
-        let my = mapValues(y,-1024,1024,0,canvas.height);
+        let mx = mapValues(x,-1024,1024,0,w);
+        let my = mapValues(y,-1024,1024,0,h);
 
         // line creation
         ctx.strokeStyle = 'greenyellow';

@@ -60,7 +60,7 @@ canvas {
 
 .grid-container {
    display: grid;
-   grid-template-columns: repeat(5, 1fr ) ;
+   grid-template-columns: repeat(3, 50px ) ;
    /* grid-template-rows: repeat(2, [row] auto  ); */
    grid-gap: 20px;
 }
