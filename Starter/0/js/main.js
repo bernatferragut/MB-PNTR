@@ -82,14 +82,14 @@ function CreateCanvas() {
     console.log('canvas loaded')
     return`
     <div class="flex-container grid-container-menu fadeIn3">
-        <button id="draw" class="btn-menu">DRAW</button>
-        <button id="erase" class="btn-menu">ERASE</button>
-        <button id="load" class="btn-menu">LOAD</button>
-        <button id="save" class="btn-menu">SAVE</button>
-        <button id="color" class="btn-menu">COLOR</button>
-        <button id="stroke" class="btn-menu">STROKE</button>
-        <button id="brush" class="btn-menu">BRUSH</button>
-        <button id="alpha" class="btn-menu">ALPHA</button>
+        <button id="draw" class="btn-menu">&#x270e;</button>
+        <button id="erase" class="btn-menu">&#x2702;</button>
+        <button id="load" class="btn-menu">&#x2191;</button>
+        <button id="save" class="btn-menu">&#x2193;</button>
+        <button id="color" class="btn-menu">&#x2600;</button>
+        <button id="stroke" class="btn-menu">&#x2022;</button>
+        <button id="brush" class="btn-menu">&#x2605;</button>
+        <button id="alpha" class="btn-menu">&#x25d1;</button>
     </div>
     <div class="flex-container fadeIn3">
         <canvas id="canvas"></canvas>
@@ -217,6 +217,11 @@ function startCanvas() {
 
     // animation
     function drawCanvas() {
+        /* context composition
+        none, copy, destination-atop, destination-in, destination-out, 
+        destination-over, source-top, source-in, source-out, source-over, 
+        lighter, xor  */
+        ctx.globalCompositeOperation = "lighter";
  
         // accelerometer data
         let x = microBit.getAccelerometer().x;
