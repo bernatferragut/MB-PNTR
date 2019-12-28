@@ -78,6 +78,16 @@ function mbData() {
 function CreateCanvas() {
     console.log('canvas loaded')
     return`
+    <div class="flex-container grid-container-menu fadeIn3">
+        <button id="draw" class="btn-menu">DRAW</button>
+        <button id="erasw" class="btn-menu">ERASE</button>
+        <button id="load" class="btn-menu">LOAD</button>
+        <button id="save" class="btn-menu">SAVE</button>
+        <button id="color" class="btn-menu">COLOR</button>
+        <button id="stroke" class="btn-menu">STROKE</button>
+        <button id="brush" class="btn-menu">BRUSH</button>
+        <button id="alpha" class="btn-menu">ALPHA</button>
+    </div>
     <div class="flex-container fadeIn3">
         <canvas id="canvas"></canvas>
     </div>
@@ -161,9 +171,7 @@ function startCanvas() {
 
     // animation
     function drawCanvas() {
-        // global transparency
-        ctx.globalAlpha = 0.25;
-
+ 
         // accelerometer data
         let x = microBit.getAccelerometer().x;
         let y = microBit.getAccelerometer().y;
@@ -172,6 +180,11 @@ function startCanvas() {
         // changing the -1024/1024 range change the graphics significantly
         let mx = mapValues(x,-1024,1024,0,w);
         let my = mapValues(y,-1024,1024,0,h);
+        // let mz = mapValues(z,-1024,1024,0,1);
+
+        // global transparency
+        // ctx.globalAlpha = mz;
+        ctx.globalAlpha = 0.25;
 
         // line creation
         ctx.strokeStyle = 'greenyellow';
