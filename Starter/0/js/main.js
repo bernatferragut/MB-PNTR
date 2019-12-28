@@ -53,6 +53,9 @@ function searchDevice(){
     Render();
     // Start the Canvas
     startCanvas();
+    // Start Menu Buttons
+    startMenuButtons();
+
 }
 // TITLE2
 function Title2(data) {
@@ -80,7 +83,7 @@ function CreateCanvas() {
     return`
     <div class="flex-container grid-container-menu fadeIn3">
         <button id="draw" class="btn-menu">DRAW</button>
-        <button id="erasw" class="btn-menu">ERASE</button>
+        <button id="erase" class="btn-menu">ERASE</button>
         <button id="load" class="btn-menu">LOAD</button>
         <button id="save" class="btn-menu">SAVE</button>
         <button id="color" class="btn-menu">COLOR</button>
@@ -145,9 +148,52 @@ microBit.onBleNotify(function(){
 })
 //-------------------
 
+function startMenuButtons() {
+    // CANVAS MENU BUTTONS
+    // selections
+    let drawButton = document.querySelector('#draw').addEventListener('click', startDrawing);
+    let eraseButton = document.querySelector('#erase').addEventListener('click', eraseCanvas);
+    let loadutton = document.querySelector('#load').addEventListener('click', loadDrawing);
+    let saveButton = document.querySelector('#save').addEventListener('click', saveDrawing);
+    let colorButton = document.querySelector('#color').addEventListener('click', colorPicker);
+    let strokeButton = document.querySelector('#stroke').addEventListener('click', strokeSize);
+    let brushButton = document.querySelector('#brush').addEventListener('click', brushStyle);
+    let alphaButton = document.querySelector('#alpha').addEventListener('click', alphaAmount);
+    // actions
+    let penDown = false;
+
+    function startDrawing() {
+        console.log('startDrawing');
+    }
+    function stopDrawing() {
+        console.log('stopDrawing');
+    }
+    function eraseCanvas() {
+        console.log('stopDrawing');
+    }
+    function loadDrawing() {
+        console.log('loadDrawing');
+    }
+    function saveDrawing() {
+        console.log('saveDrawing');
+    }
+    function colorPicker() {
+        console.log('colorPicker');
+    }
+    function strokeSize() {
+        console.log('strokeSize');
+    }
+    function brushStyle() {
+        console.log('brushStyle');
+    }
+    function alphaAmount() {
+        console.log('alphaAmount');
+    }
+    // Button Events
+}
+
 // CANVAS PROGRAMMING
 function startCanvas() {
-
     // vars
     let w = window.innerWidth;
     let h = window.innerHeight;
