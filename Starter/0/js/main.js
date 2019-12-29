@@ -54,7 +54,7 @@ function searchDevice(){
     // Start the Canvas
     startCanvas();
     // Start Menu Buttons
-    startMenuButtons();
+    // startMenuButtons();
 
 }
 // TITLE2
@@ -160,21 +160,24 @@ function startMenuButtons() {
     let brushButton = document.querySelector('#brush').addEventListener('click', brushStyle);
     let alphaButton = document.querySelector('#alpha').addEventListener('click', alphaAmount);
     // actions
-    let penDown = false;
-
-    function startDrawing() {
+    function startDrawing(event) {
         console.log('startDrawing');
+        penDown = true;
+        console.log('penDown = true');
     }
-    function stopDrawing() {
+    function stopDrawing(event) {
         console.log('stopDrawing');
+        penDown = false;
+        console.log('penDown = false');
     }
-    function eraseCanvas() {
-        console.log('stopDrawing');
+    function eraseCanvas(ctx) {
+        console.log('erase');
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-    function loadDrawing() {
+    function loadDrawing(ctx) {
         console.log('loadDrawing');
     }
-    function saveDrawing() {
+    function saveDrawing(ctx) {
         console.log('saveDrawing');
     }
     function colorPicker() {
@@ -186,15 +189,32 @@ function startMenuButtons() {
     function brushStyle() {
         console.log('brushStyle');
     }
-    function alphaAmount() {
+    function alphaAmount() { 
         console.log('alphaAmount');
     }
     // Button Events
+    document.addEventListener('keydown', function(event) {
+        if ( event.key === "Backspace") {
+            console.log('BACKSPACE was pressed');
+            event.preventDefault()
+            // startDrawing();
+        }
+    });  
+    
+    document.addEventListener('keyup', function(event) {
+        if ( event.key === "Backspace") {
+            console.log('BACKSPACE was UN-pressed');
+            event.preventDefault()
+            // stopDrawing();
+        }
+    });
 }
 
 // CANVAS PROGRAMMING
 function startCanvas() {
     // vars
+    let penDown = false;
+    let savedImageData;
     let w = window.innerWidth;
     let h = window.innerHeight;
     // requestAnimationFrame for creating Loop
@@ -208,8 +228,10 @@ function startCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-
     resizeCanvas();
+
+    // MenuButtonsLoad
+    startMenuButtons();
 
     // Background Color
      ctx.fillStyle = "#101010";
@@ -217,6 +239,11 @@ function startCanvas() {
 
     // animation
     function drawCanvas() {
+        // if(penDown == true) {
+        //     console.log(' penDown = true');
+        // } else {
+        //     console.log('penDown = false');
+        // }
         /* context composition
         none, copy, destination-atop, destination-in, destination-out, 
         destination-over, source-top, source-in, source-out, source-over, 

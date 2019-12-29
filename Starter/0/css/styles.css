@@ -42,11 +42,11 @@ h1 {
    background-color:var(--main-bg-color);
    border-radius: 4px;
    border-width: 0.5px solid;
-   border-color: black;
+   border-color: yellowgreen;
    padding: 10px;
    font-size: 14px;
    margin: 10px;
-   color: greenyellow;
+   color: yellow;
  }
 
  .btn-menu:hover, .btn:hover {
