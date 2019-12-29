@@ -170,15 +170,22 @@ function startMenuButtons() {
         penDown = false;
         console.log('penDown = false');
     }
-    function eraseCanvas(ctx) {
+    function eraseCanvas() {
         console.log('erase');
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     function loadDrawing(ctx) {
         console.log('loadDrawing');
     }
-    function saveDrawing(ctx) {
+    function saveDrawing() {
         console.log('saveDrawing');
+        let finalCanvas = document.querySelector('#canvas');
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = finalCanvas.toDataURL('image/png',1);
+        a.download = 'canvas-image.png';
+        a.click();
+        document.body.removeChild(a);
     }
     function colorPicker() {
         console.log('colorPicker');
