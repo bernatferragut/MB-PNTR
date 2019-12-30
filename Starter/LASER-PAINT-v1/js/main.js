@@ -317,6 +317,8 @@ function RandomColor() {
 
 /* TO DO
 
+0 - Covert the DOT into an OBJECT that can be fef by changing parameters
+
 1 - IMPLEMENTATION OF 2 FUNCTIONS:
 1.1 - P5JS MAP FUNCTION
 
