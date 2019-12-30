@@ -90,6 +90,11 @@ function CreateCanvas() {
         <button id="stroke" class="btn-menu">&#x2022;</button>
         <button id="brush" class="btn-menu">&#x2605;</button>
         <button id="alpha" class="btn-menu">&#x25d1;</button>
+        <input type="range" 
+            class="slider"
+            min="1" max="100" 
+            value="50" class="slider" 
+            id="myRange">
     </div>
     <div class="flex-container fadeIn3">
         <canvas id="canvas"></canvas>
@@ -159,6 +164,7 @@ function startMenuButtons() {
     let strokeButton = document.querySelector('#stroke').addEventListener('click', strokeSize);
     let brushButton = document.querySelector('#brush').addEventListener('click', brushStyle);
     let alphaButton = document.querySelector('#alpha').addEventListener('click', alphaAmount);
+    let alphaSlider = document.querySelector('#slider').addEventListener('click', sliderAlpha);
     // actions
     function startDrawing(event) {
         console.log('startDrawing');
@@ -172,7 +178,10 @@ function startMenuButtons() {
     }
     function eraseCanvas() {
         console.log('erase');
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Background Color
+        let context = querySelector('.canvas');
+        context.fillStyle = "#101010";
+        context.fillRect(0, 0, canvas.width , canvas.height);
     }
     function loadDrawing(ctx) {
         console.log('loadDrawing');
@@ -189,6 +198,8 @@ function startMenuButtons() {
     }
     function colorPicker() {
         console.log('colorPicker');
+        randomColor = RandomColor();
+        console.log('RANDOM COLOR:', randomColor);
     }
     function strokeSize() {
         console.log('strokeSize');
@@ -198,6 +209,9 @@ function startMenuButtons() {
     }
     function alphaAmount() { 
         console.log('alphaAmount');
+    }
+    function sliderAlpha() {
+        sliderValue = slider.value;
     }
     // Button Events
     document.addEventListener('keydown', function(event) {
@@ -218,7 +232,7 @@ function startMenuButtons() {
 }
 
 // CANVAS PROGRAMMING
-function startCanvas() {
+function startCanvas(randomColor) {
     // vars
     let penDown = false;
     let savedImageData;
@@ -245,7 +259,7 @@ function startCanvas() {
      ctx.fillRect(0, 0, canvas.width , canvas.height);
 
     // animation
-    function drawCanvas() {
+    function drawCanvas(randomColor) {
         // if(penDown == true) {
         //     console.log(' penDown = true');
         // } else {
@@ -272,6 +286,7 @@ function startCanvas() {
         ctx.globalAlpha = 0.25;
 
         // line creation
+        // ctx.strokeStyle = randomColor;
         ctx.strokeStyle = 'greenyellow';
         ctx.lineWidth = 2;
         ctx.lineCap = 'round'
@@ -288,10 +303,16 @@ function startCanvas() {
 }
 
 // HELPERS
-
+// map two different range values
 function mapValues (n, start1, stop1, start2, stop2) {
     return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
   };
+
+// random color
+function RandomColor() {
+    let color = `#${Math.floor(Math.random()*16777215)}`.toString(16);
+    return color;
+}
 
 
 /* TO DO

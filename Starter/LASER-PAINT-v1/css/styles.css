@@ -83,7 +83,7 @@ canvas {
 
 .grid-container-menu {
    display: grid;
-   grid-template-columns: repeat(8, [col] auto ) ;
+   grid-template-columns: repeat(9, [col] auto ) ;
    /* grid-template-rows: repeat(2, [row] auto  ); */
    grid-gap: 5px;
 }
@@ -197,3 +197,32 @@ canvas {
  .tooltip:hover .tooltiptext {
    visibility: visible;
  } */
+
+ /* sliders */
+ .slidecontainer {
+   width: 100%; /* Width of the outside container */
+ }
+ 
+ /* The slider itself */
+ .slider {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 50%;
+   height: 1px;
+   border-radius: 0px;   
+   background:greenyellow;
+   outline: none;
+   opacity: 100%;
+   -webkit-transition: .2s;
+   transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 6px;
+   height: 6px;
+   border-radius: 50%; 
+   background:greenyellow;
+   cursor: pointer;
+}
