@@ -251,7 +251,7 @@ function startCanvas() {
         // } else {
         //     console.log('penDown = false');
         // }
-        /* context composition
+        /* context composition combo
         none, copy, destination-atop, destination-in, destination-out, 
         destination-over, source-top, source-in, source-out, source-over, 
         lighter, xor  */
@@ -299,25 +299,24 @@ function mapValues (n, start1, stop1, start2, stop2) {
 1 - IMPLEMENTATION OF 2 FUNCTIONS:
 1.1 - P5JS MAP FUNCTION
 
-p5.prototype.map
+p5.prototype.map - DONE
 
 > use p5js function by importing the p5 implementation of it
 
 1.2 - P5JS PERLIN NOISE FUNCTION
-p5.prototype.noise 
+p5.prototype.noise - TO ADD
 
 > use p5js function by importing the p5 implementation of it
 
 2- ADD BUTTONS
 . Z Control - Depth
-. DRAW
-. ERASE
-. SAVE
-. LOAD
-. 1.3.5 DOT BRUSH
-. CIRCULAR MOTION - SPEED
-. BG TRANSPARENCY
-
+. DRAW - TO DO
+. ERASE - TO DO
+. SAVE - DONE
+. LOAD - TO DO
+. 1.3.5 DOT BRUSH - TO DO
+. CIRCULAR MOTION - SPEED - TO DO
+. BG TRANSPARENCY - TO DO
 
 3- WEB GAZER JS
 
@@ -326,5 +325,7 @@ Implement the eye movement control of the drawing with this library
 Gettin Shake acceleration option
 
 acceleration = math.sqrt(x**2 + y**2 + z**2)
+
+4- SAPPER / SVELTE VERSION
 
 */
