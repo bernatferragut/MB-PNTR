@@ -10,4 +10,4 @@
 [EXAMPLE](https://svelte.dev/)
 
 ## 4. Paint control with the Microbit accelerometer
-[microbit](https://microbit-challenges.readthedocs.io/en/latest/tutorials/accelerometer.html)
+[EXAMPLE](https://microbit-challenges.readthedocs.io/en/latest/tutorials/accelerometer.html)
