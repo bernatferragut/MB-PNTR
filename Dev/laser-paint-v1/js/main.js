@@ -164,7 +164,7 @@ function startMenuButtons() {
     let strokeButton = document.querySelector('#stroke').addEventListener('click', strokeSize);
     let brushButton = document.querySelector('#brush').addEventListener('click', brushStyle);
     let alphaButton = document.querySelector('#alpha').addEventListener('click', alphaAmount);
-    let alphaSlider = document.querySelector('#slider').addEventListener('click', sliderAlpha);
+    // let alphaSlider = document.querySelector('#slider').addEventListener('click', sliderAlpha);
     // actions
     function startDrawing(event) {
         console.log('startDrawing');
