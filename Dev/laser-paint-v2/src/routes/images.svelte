@@ -33,9 +33,14 @@
 </style>
 
 <svelte:head>
-	<title>Welcome to microbit-painter</title>
+	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Welcome to the microbit painter</h1>
+<h1>microbit images</h1>
 
+<figure>
+	<img alt='Borat' src='images/tree.png'>
+	<figcaption>HIGH FIVE!</figcaption>
+</figure>
 
+<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
