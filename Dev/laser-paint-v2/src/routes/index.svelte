@@ -33,10 +33,10 @@
 </style>
 
 <svelte:head>
-	<title>LASER MICROBIT</title>
+	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>LASER MICROBIT</h1>
+<h1>Great success!</h1>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
