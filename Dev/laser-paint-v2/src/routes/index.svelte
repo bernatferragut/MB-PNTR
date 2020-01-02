@@ -29,7 +29,7 @@
 </style>
 
 <svelte:head>
-	<title>Welcome to microbit-painter</title>
+	<title>HOME</title>
 </svelte:head>
 
 <h1>Welcome to the microbit painter</h1>

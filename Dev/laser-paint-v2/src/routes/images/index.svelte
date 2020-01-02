@@ -28,7 +28,7 @@
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>IMAGES</title>
 </svelte:head>
 
 <h1>microbit images</h1>

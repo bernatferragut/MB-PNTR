@@ -29,7 +29,7 @@
 </style>
 
 <svelte:head>
-	<title>microbit-application</title>
+	<title>APPLICATION</title>
 </svelte:head>
 
 <h1>microbit application</h1>

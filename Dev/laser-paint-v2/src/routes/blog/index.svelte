@@ -40,7 +40,7 @@
 </style>
 
 <svelte:head>
-	<title>Blog</title>
+	<title>INSTRUCTIONS</title>
 </svelte:head>
 
 <h1>Recent posts</h1>
