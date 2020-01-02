@@ -3,48 +3,30 @@
 </script>
 
 <style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
+	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+
+	/* VARIABupdateLES */
+	:root {
+		--main-bg-color: #101010;
+		--main-text-color: greenyellow;
 	}
 
-	ul {
-		margin: 0;
-		padding: 0;
+	/* MAIN */
+	body, input {
+		color: var(--main-text-color);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 10px;
+		background-color: var(--main-bg-color);
+		margin: 10px;
 	}
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	.selected {
-		position: relative;
-		display: inline-block;
-	}
-
-	.selected::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
+	h1 {
+		color: var(--main-text-color);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 10px;
+		letter-spacing: 8px;
+		background-color: var(--main-bg-color);
+		margin: 10px;
 	}
 </style>
 
@@ -52,6 +34,7 @@
 	<ul>
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		the blog data when we hover over the link or tap it on a touchscreen -->
+		<li><a rel=prefetch class:selected='{segment === undefined}' href='.'>home</a></li>
 		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog/.'>instructions</a></li>
 		<li><a class:selected='{segment === "application"}' href='application'>application</a></li>
 		<li><a class:selected='{segment === "images"}' href='images'>images</a></li>

@@ -1,35 +1,31 @@
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
+  /* FONTS */
+  @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
+  /* VARIABupdateLES */
+  :root {
+      --main-bg-color: #101010;
+      --main-text-color: greenyellow;
+    }
 
-	figure {
-		margin: 0 0 1em 0;
-	}
+  /* MAIN */
+  body {
+      color: var(--main-text-color);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      background-color: var(--main-bg-color);
+      margin: 10px;
+  }
 
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
+  h1 {
+    color: var(--main-text-color);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 8px;
+    background-color: var(--main-bg-color);
+    margin: 10px;
+  }
 
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
 </style>
 
 <svelte:head>
