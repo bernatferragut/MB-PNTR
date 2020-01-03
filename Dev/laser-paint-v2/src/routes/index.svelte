@@ -1,3 +1,12 @@
+<script>
+	import { quintOut } from 'svelte/easing';
+	import { fade, draw, fly } from 'svelte/transition';
+
+	let visible = true;
+
+</script>
+
+
 <style>
 	.flex-container {
 		display: flex;
@@ -24,4 +33,17 @@
 
 <div class="flex-container">
 	<h1>WELCOME</h1>
+	{#if visible}
+	<div class="centered">
+		{#each 'LAZERBIT' as char, i}
+			<span
+				in:fade="{{delay: 1000 + i * 150, duration: 800}}"
+			>{char}</span>
+		{/each}
+	</div>
+{/if}
+	
 </div>
+
+
+
