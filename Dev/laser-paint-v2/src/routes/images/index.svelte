@@ -15,7 +15,7 @@
 		background-color: var(--main-bg-color);
 		margin: 10px;
 	}
-	ul, li, a {
+	ul, li, p {
 		color: var(--main-text-color);
 		letter-spacing: 2px;
 		text-decoration: none;
@@ -24,6 +24,10 @@
 		display: inline-block;
 		width: 100%;
 		text-align: center;
+	}
+
+	img{
+		width: 100%;
 	}
 </style>
 
@@ -37,7 +41,7 @@
 </div>
 <div class="flex-container">
 		<img alt='Tree' src='images/tree.png'>
-		<a href="#">HIGH FIVE!</a>
+		<p >TREE 2020</p>
 </div>
 
 
