@@ -22,15 +22,6 @@
 		background-color: var(--main-bg-color);
 		margin: 10px;
 	}
-
-	h1 {
-		color: var(--main-text-color);
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 10px;
-		letter-spacing: 8px;
-		background-color: var(--main-bg-color);
-		margin: 10px;
-	}
 	main {
 		position: relative;
 		max-width: 56em;

@@ -11,6 +11,22 @@
 </script>
 
 <style>
+	ul, li, a {
+		color: var(--main-text-color);
+		font-weight: 300;
+		letter-spacing: 2px;
+		text-decoration: none;
+		background: var(--main-bg-color);
+		padding: 20px 5px;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
+
+	a:hover {
+		color: var(--main-bg-color);
+		background: var(--main-text-color);
+	}
 
 </style>
 
