@@ -48,8 +48,8 @@
 		animation-fill-mode: forwards;
 		-webkit-animation-fill-mode: forwards;
 
-		animation-duration: 1.2s;
-		-webkit-animation-duration: 0.7s;
+		animation-duration: 2.7s;
+		-webkit-animation-duration: 2.7s;
 	}
 </style>
 
