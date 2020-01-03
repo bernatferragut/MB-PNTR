@@ -48,11 +48,6 @@
 	<title>HOME</title>
 </svelte:head>
 
-
-<!-- <div class="flex-container ">
-	<div class="centered fadeIn">LAZERBIT</div>
-</div> -->
-
 {#if visible}
 	<div class="flex-container">
 		{#each 'LZRBIT' as char, i}
