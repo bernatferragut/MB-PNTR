@@ -1,4 +1,14 @@
 <script>
+	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
+
+	let visible = false;
+
+	onMount(() => {
+		const interval = setTimeout(() => {
+			visible = true
+		}, 234);
+	});
 
 </script>
 
@@ -6,17 +16,18 @@
 <style>
 	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
-	/* VARIABupdateLES */
+	/* VARIABLES*/
 	:root {
 		--main-bg-color: #101010;
 		--main-text-color: greenyellow;
+		--second-text-color:tomato;
 	}
 
 	.flex-container {
 		display: flex;
 		align-items: center; 
 		justify-content: center;
-		flex-direction: column;
+		flex-direction: row;
 		max-height: auto;
 	}
 
@@ -24,32 +35,12 @@
 		font-family: 'IBM Plex Mono', monospace;
 		background-color: var(--main-bg-color);
 		color: var(--main-text-color);
-		padding: 0;
-		margin-left: 5vh;
-		margin-top: 10vh;
-		font-size: 6vw;
-		letter-spacing: 1.12em;
-	}
-
-	  /* FADE IN  DESIGN */
-	@-webkit-keyframes fadeIn {
-		0% {opacity: 0;} to {opacity: 1;}
-	}
-	@keyframes fadeIn {
-		0% {opacity: 0;} to {opacity: 1;}
-	}
-
-	.fadeIn {
-		opacity:0;
-
-		animation: fadeIn ease-in 1;
-		-webkit-animation: fadeIn ease-in 1;
-
-		animation-fill-mode: forwards;
-		-webkit-animation-fill-mode: forwards;
-
-		animation-duration: 2.7s;
-		-webkit-animation-duration: 2.7s;
+		width:100px;height:100px;
+		display:table-cell;
+		text-align:center;
+		vertical-align:middle;
+		font-size: 5vh;
+		letter-spacing: 5vw;
 	}
 </style>
 
@@ -58,9 +49,20 @@
 </svelte:head>
 
 
-<div class="flex-container ">
+<!-- <div class="flex-container ">
 	<div class="centered fadeIn">LAZERBIT</div>
-</div>
+</div> -->
+
+{#if visible}
+	<div class="flex-container">
+		{#each 'LZRBIT' as char, i}
+			<div class="centered" in:fade="{{delay: 234 + i * 150, duration: 800}}">
+				{char}
+			</div>
+		{/each}
+	</div>
+{/if}
+
 
 
 
