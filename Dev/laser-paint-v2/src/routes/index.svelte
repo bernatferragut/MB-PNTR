@@ -51,7 +51,7 @@
 
 {#if visible}
 	<div class="flex-container">
-		{#each 'LZRBIT' as char, i}
+		{#each ' L Z R B I T' as char, i}
 			<div class="centered" in:fade="{{delay: 234 + i * 150, duration: 800}}">
 				{char}
 			</div>
