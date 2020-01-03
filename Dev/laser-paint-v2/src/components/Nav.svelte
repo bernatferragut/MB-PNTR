@@ -4,13 +4,19 @@
 
 
 <style>
-/* GLOBAL STYLES */
-	/* FONTS */
+	/* Inspired by https://www.ostraining.com/blog/webdesign/create-navmenu-with-flexbox/ */
 	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
 	:root {
 		--main-bg-color: #101010;
 		--main-text-color: greenyellow;
+	}
+	
+	body {
+		background-color: var(--main-bg-color);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 10px;
+		margin: 0;
 	}
 	a {
 		color: var(--main-text-color);
@@ -30,17 +36,21 @@
 	}
 
 	.main {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 3em 1.5em;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 3em 1.5em;
 	}
 
 	.navigation ul {
-	border: 1px solid black;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
+		border: 1px solid black;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+	}
+
+	.navigation li {
+		flex: 3;    
 	}
 </style>
 
