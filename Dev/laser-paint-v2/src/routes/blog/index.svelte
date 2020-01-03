@@ -11,9 +11,24 @@
 </script>
 
 <style>
+/* FLEX */
+	.flex-container {
+		display: flex;
+		align-items: center; 
+		justify-content: center;
+		flex-direction: column;
+		max-height: auto;
+	}
+
+	h1 {
+		color: var(--main-text-color);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 12px;
+		background-color: var(--main-bg-color);
+		margin: 10px;
+	}
 	ul, li, a {
 		color: var(--main-text-color);
-		font-weight: 300;
 		letter-spacing: 2px;
 		text-decoration: none;
 		background: var(--main-bg-color);
@@ -34,14 +49,18 @@
 	<title>INSTRUCTIONS</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<div class="flex-container">
+	<h1>INSTRUCTIONS</h1>
+</div>
 
-<ul>
-	{#each posts as post}
-		<!-- we're using the non-standard `rel=prefetch` attribute to
-				tell Sapper to load the data for the page as soon as
-				the user hovers over the link or taps it, instead of
-				waiting for the 'click' event -->
-		<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
-	{/each}
-</ul>
+<div class="flex-container">
+	<ul>
+		{#each posts as post}
+			<!-- we're using the non-standard `rel=prefetch` attribute to
+					tell Sapper to load the data for the page as soon as
+					the user hovers over the link or taps it, instead of
+					waiting for the 'click' event -->
+			<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
+		{/each}
+	</ul>
+</div>
