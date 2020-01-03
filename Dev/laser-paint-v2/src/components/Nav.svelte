@@ -2,41 +2,58 @@
 	export let segment;
 </script>
 
+
 <style>
+/* GLOBAL STYLES */
+	/* FONTS */
 	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
-	/* VARIABupdateLES */
 	:root {
 		--main-bg-color: #101010;
 		--main-text-color: greenyellow;
 	}
-
-	/* MAIN */
-	body, input {
+	a {
 		color: var(--main-text-color);
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 10px;
-		background-color: var(--main-bg-color);
-		margin: 10px;
+		font-weight: 300;
+		letter-spacing: 2px;
+		text-decoration: none;
+		background: var(--main-bg-color);
+		padding: 20px 5px;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
 	}
 
-	h1 {
-		color: var(--main-text-color);
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 10px;
-		letter-spacing: 8px;
-		background-color: var(--main-bg-color);
-		margin: 10px;
+	a:hover {
+		color: var(--main-bg-color);
+		background: var(--main-text-color);
+	}
+
+	.main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 3em 1.5em;
+	}
+
+	.navigation ul {
+	border: 1px solid black;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
 	}
 </style>
 
-<nav>
-	<ul>
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class:selected='{segment === undefined}' href='.'>home</a></li>
-		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog/.'>instructions</a></li>
-		<li><a class:selected='{segment === "application"}' href='application'>application</a></li>
-		<li><a class:selected='{segment === "images"}' href='images'>images</a></li>
-	</ul>
-</nav>
+<div class="main">
+    <nav class="navigation">
+        <ul>
+			<li><a rel=prefetch class:selected='{segment === undefined}' href='.'>[ + ]</a></li>
+			<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog/.'>HOW</a></li>
+            <li><a class:selected='{segment === "application"}' href='application'>APP</a></li>
+            <li><a class:selected='{segment === "images"}' href='images'>DATA</a></li>
+            <!-- <li><a href="#">Contact</a></li> -->
+		</ul> 
+	</nav>
+</div>
+
+

@@ -11,32 +11,7 @@
 </script>
 
 <style>
-	/* FONTS */
-	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
-	/* VARIABupdateLES */
-	:root {
-		--main-bg-color: #101010;
-		--main-text-color: greenyellow;
-	}
-
-	/* MAIN */
-	body {
-		color: var(--main-text-color);
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 10px;
-		background-color: var(--main-bg-color);
-		margin: 10px;
-	}
-
-	h1 {
-		color: var(--main-text-color);
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 10px;
-		letter-spacing: 8px;
-		background-color: var(--main-bg-color);
-		margin: 10px;
-	}
 </style>
 
 <svelte:head>
