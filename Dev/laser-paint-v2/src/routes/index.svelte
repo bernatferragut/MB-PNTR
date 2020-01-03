@@ -35,6 +35,7 @@
 		font-family: 'IBM Plex Mono', monospace;
 		background-color: var(--main-bg-color);
 		color: var(--main-text-color);
+		margin-top: 23vh;
 		width:100px;height:100px;
 		display:table-cell;
 		text-align:center;
