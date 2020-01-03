@@ -24,7 +24,7 @@
 		letter-spacing: 2px;
 		text-decoration: none;
 		background: var(--main-bg-color);
-		padding: 20px 5px;
+		padding: 10px 5px;
 		display: inline-block;
 		width: 100%;
 		text-align: center;
@@ -42,7 +42,6 @@
 	}
 
 	.navigation ul {
-		border: 1px solid black;
 		list-style: none;
 		margin: 0;
 		padding: 0;

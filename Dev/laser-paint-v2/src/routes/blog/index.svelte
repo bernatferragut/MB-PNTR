@@ -19,6 +19,9 @@
 		flex-direction: column;
 		max-height: auto;
 	}
+	/* div {
+		text-align: center;
+	} */
 
 	h1 {
 		color: var(--main-text-color);
@@ -32,10 +35,19 @@
 		letter-spacing: 2px;
 		text-decoration: none;
 		background: var(--main-bg-color);
-		padding: 20px 5px;
+		padding: 10px 5px;
 		display: inline-block;
 		width: 100%;
 		text-align: center;
+	}
+
+	ul {
+		text-align: center;
+		list-style-position: none;
+	}
+
+	li {
+		display: inline-block;
 	}
 
 	a:hover {
@@ -50,7 +62,7 @@
 </svelte:head>
 
 <div class="flex-container">
-	<h1>INSTRUCTIONS</h1>
+	<h1>ART INSTRUCTIONS</h1>
 </div>
 
 <div class="flex-container">
