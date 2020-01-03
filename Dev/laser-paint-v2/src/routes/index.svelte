@@ -25,6 +25,7 @@
 		background-color: var(--main-bg-color);
 		color: var(--main-text-color);
 		padding: 0;
+		margin-left: 5vh;
 		margin-top: 10vh;
 		font-size: 6vw;
 		letter-spacing: 1.12em;
@@ -39,18 +40,17 @@
 	}
 
 	.fadeIn {
-	opacity:0;
+		opacity:0;
 
-	animation: fadeIn ease-in 1;
-	-webkit-animation: fadeIn ease-in 1;
+		animation: fadeIn ease-in 1;
+		-webkit-animation: fadeIn ease-in 1;
 
-	animation-fill-mode: forwards;
-	-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		-webkit-animation-fill-mode: forwards;
 
-	animation-duration: 1.2s;
-	-webkit-animation-duration: 0.7s;
+		animation-duration: 1.2s;
+		-webkit-animation-duration: 0.7s;
 	}
-
 </style>
 
 <svelte:head>
@@ -58,8 +58,8 @@
 </svelte:head>
 
 
-<div class="flex-container">
-	<div  class="centered fadeIn">LAZERBIT</div>
+<div class="flex-container ">
+	<div class="centered fadeIn">LAZERBIT</div>
 </div>
 
 
