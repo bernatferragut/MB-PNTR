@@ -14,9 +14,9 @@ const posts = [
 		html: `
 			<p>LZRBIT is a drawing-app designed to create web-art using the BBC Microbit microcontroller.</p>
 
-			<p>Pieces of Art are created using the microbit -Bluetooth Technology BLE- accelerometer service paired with the browser</p>
+			<p>Pieces of Art are created by using the microbit accelerometer BLE service - Bluetooth Low Energy- paired with the browser.</p>
 
-			<p>V.2 allows to save images into a Database. In future versions we want to add other sensors to achieve the movement like: </p>
+			<p>In future versions we want to add other sensors to achieve the movement like: </p>
 
 			<ul>
 				<li>Web Gazer API - To control the LZR movement through AI Eye Tracking</li>
@@ -35,22 +35,26 @@ const posts = [
 		title: '> HOW TO USE LZRBIT',
 		slug: 'how-to-use-lzrbit',
 		html: `
-			<h4>Step one</h4>
-			<p>To use the library, download and upload this firmware on your BBC micro:bit board.</p>
-			<p>The firmware was produced by bittysoftware.</p>
-			<h4>Step two</h4>
+			<h4>1.</h4>
+			<p>To use this Application you will need a microbit and the Chrome Browser.
+			<p>First you need to download and upload this firmware on your BBC micro:bit board.</p>
+			<p>*The firmware was produced by bittysoftware.*</p>
+			<h4>2.</h4>
 			<p>Keep in mind that web bluetooth API are still experimental and your OS and browser might not support the feature.</p>
-			<p>Alway use Google Chrome as the Browser - BLE API -  still in experimental mode and other browsers may fail.</p>
-			<h4>Step three</h4>
-			<p>Once the firmware is uploaded and you are using the Chrome Browser:</p>
+			<p>Use Google Chrome as the Browser - BLE API -  to make sure it will work.</p>
+			<h4>3.</h4>
+			<p>Once the firmware is uploaded to your microbit and you are using the Chrome Browser:</p>
 			<ul>
 				<li>Go to the LZRBIT APP section</li>
-				<li>Use the AIR BUTTON to pair your microbit accelerometer witht the LZRBIT App</li>
-				<li>Use drawing mode by touching the SPACE BAR and STOP by releasing it</li>
-				<li>Use the x,y,z axis by rotating the microbit to draw on the Web Canvas</li>
-				<li>Draw your design with patience and love</li>
-				<li>Save your design by clicking the SAFE button</li>
+				<li>Use the PAIR BUTTON to pair your microbit accelerometer witht the LZRBIT App.</li>
+				<li>Use drawing mode by touching the SPACE BAR and stop by releasing it.</li>
+				<li>Use the microbit x,y,z axis to draw on the canvas by rotating them.</li>
+				<li>Use the top right GUI parameters to mold your designs at will.</li>
+				<li>Draw your design with patience and love.</li>
+				<li>Save your design by clicking the SAVE button on the APP.</li>
 			</ul>
+			<h4>4.</h4>
+			<p>All your designs will be saved under the DATA section of the LZRBIT App.</p>
 		`
 	},
 	{
