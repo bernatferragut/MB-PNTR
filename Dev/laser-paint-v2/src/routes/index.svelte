@@ -50,6 +50,7 @@
 </svelte:head>
 
 {#if visible}
+	<!-- GREEN LZR TEXT -->
 	<div class="flex-container">
 		{#each ' L Z R B I T' as char, i}
 			<div class="centered" in:fade="{{delay: 234 + i * 150, duration: 800}}">

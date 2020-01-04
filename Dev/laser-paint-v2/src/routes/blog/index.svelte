@@ -11,7 +11,7 @@
 </script>
 
 <style>
-/* FLEX */
+	/* FLEX */
 	.flex-container {
 		display: flex;
 		align-items: center; 
@@ -62,7 +62,7 @@
 </svelte:head>
 
 <div class="flex-container">
-	<h1>ART INSTRUCTIONS</h1>
+	<h1>INSTRUCTIONS</h1>
 </div>
 
 <div class="flex-container">

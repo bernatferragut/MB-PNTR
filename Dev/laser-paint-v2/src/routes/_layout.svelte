@@ -32,6 +32,19 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
+
+	.footer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: var(--main-bg-color);
+		color: var(--main-text-color);
+		text-align: center;
+	}
+	a:link {
+		color: var(--main-text-color);
+	}
 </style>
 
 <Nav {segment}/>
@@ -39,3 +52,8 @@
 <main>
 	<slot></slot>
 </main>
+
+<footer class="footer">
+  <p><a href="mailto:bernatferragut@protonomail.com">
+  Bernat Ferragut | 2020 | Open Source </a></p>
+</footer>
