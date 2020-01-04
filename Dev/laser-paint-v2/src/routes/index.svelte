@@ -5,9 +5,7 @@
 	let visible = false;
 
 	onMount(() => {
-		const interval = setTimeout(() => {
-			visible = true
-		}, 234);
+		visible = true
 	});
 
 </script>
