@@ -31,7 +31,7 @@
 		margin: 10px;
 	}
 	ul, li, a {
-		color: var(--main-text-color);
+		color: var(--main-text-color)!important;
 		letter-spacing: 2px;
 		text-decoration: none;
 		background: var(--main-bg-color);
@@ -49,11 +49,25 @@
 	li {
 		display: inline-block;
 	}
-
+	
 	a:hover {
 		color: var(--main-bg-color);
 		background: var(--main-text-color);
 	}
+
+	code {
+		font-family: menlo, inconsolata, monospace;
+		font-size: calc(1em - 2px);
+		color: var(--main-bg-color);
+		background-color: var(--main-text-color);
+		padding: 0.2em 0.4em;
+		border-radius: 2px;
+	 }
+
+	a:link {
+		color: greenyellow!important;
+	}
+
 
 </style>
 

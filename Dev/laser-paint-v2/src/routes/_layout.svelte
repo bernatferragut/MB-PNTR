@@ -32,7 +32,6 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
-
 	.footer {
 		position: fixed;
 		left: 0;
@@ -45,6 +44,14 @@
 	a:link {
 		color: var(--main-text-color);
 	}
+	code {
+		font-family: menlo, inconsolata, monospace;
+		font-size: calc(1em - 2px);
+		color: var(--main-bg-color);
+		background-color: var(--main-text-color);
+		padding: 0.2em 0.4em;
+		border-radius: 2px;
+	 }
 </style>
 
 <Nav {segment}/>
