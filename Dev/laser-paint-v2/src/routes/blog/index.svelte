@@ -11,6 +11,11 @@
 </script>
 
 <style>
+	:root {
+		--main-bg-color: #101010;
+		--main-text-color: greenyellow;
+	}
+
 	/* FLEX */
 	.flex-container {
 		display: flex;
@@ -30,7 +35,7 @@
 		background-color: var(--main-bg-color);
 		margin: 10px;
 	}
-	ul, li, a {
+	ul, li {
 		color: var(--main-text-color)!important;
 		letter-spacing: 2px;
 		text-decoration: none;
@@ -49,6 +54,17 @@
 	li {
 		display: inline-block;
 	}
+
+	a {
+		color: var(--main-text-color);
+		letter-spacing: 2px;
+		text-decoration: none;
+		background: var(--main-bg-color);
+		padding: 10px 5px;
+		display: inline-block;
+		width: 80%;
+		text-align: center;
+	}
 	
 	a:hover {
 		color: var(--main-bg-color);
@@ -64,9 +80,9 @@
 		border-radius: 2px;
 	 }
 
-	a:link {
+	/* a:link {
 		color: greenyellow!important;
-	}
+	} */
 
 
 </style>

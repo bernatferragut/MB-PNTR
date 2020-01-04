@@ -41,9 +41,9 @@
 		color: var(--main-text-color);
 		text-align: center;
 	}
-	a:link {
+	/* a:link {
 		color: var(--main-text-color);
-	}
+	} */
 	code {
 		font-family: menlo, inconsolata, monospace;
 		font-size: calc(1em - 2px);
