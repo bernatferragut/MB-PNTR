@@ -61,6 +61,5 @@
 </main>
 
 <footer class="footer">
-  <p><a href="mailto:bernatferragut@protonomail.com">
-  Bernat Ferragut | 2020 | Open Source </a></p>
+  <p> Bernat Ferragut | 2020 | Open Source </p>
 </footer>
