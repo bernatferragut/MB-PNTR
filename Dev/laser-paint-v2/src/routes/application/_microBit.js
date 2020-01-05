@@ -23,7 +23,7 @@ var TEMP_SRV = 'e95d6100-251d-470a-a062-fa1922dfa9a8'
 var TEMP_DATA = 'e95d9250-251d-470a-a062-fa1922dfa9a8'
 var TEMP_PERIOD = 'e95d1b25-251d-470a-a062-fa1922dfa9a8'
 
-class uBit {
+export class uBit {
 
   constructor() {
     this.accelerometer = {

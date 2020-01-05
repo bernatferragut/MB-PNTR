@@ -1,6 +1,12 @@
 <script>
+	import { uBit,isWebBluetoothEnabled,getSupportedProperties,toUTF8Array } from './_microBit.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
+
+	let microbit = new uBit();
+	onMount(()=> {
+		console.log( 'microbit object mounted: ', microbit );
+	})
 
 	function microbitScriptLoaded() {
 		console.log('PAIRED');
@@ -105,7 +111,7 @@
 	<div>
 		<button 
 			class="btn" 
-			on:click={pairMicrobit}
+			on:click={microbitScriptLoaded}
 			> PAIR MICROBIT</button>
 	</div>
 	
