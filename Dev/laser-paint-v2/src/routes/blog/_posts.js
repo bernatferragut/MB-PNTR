@@ -12,20 +12,22 @@ const posts = [
 		title: '> WHAT IS LZRBIT?',
 		slug: 'what-is-lzrbit',
 		html: `
+			<h4>1.</h4>	
 			<p>LZRBIT is a drawing-app designed to create web-art using the BBC Microbit microcontroller.</p>
-
+			<h4>2.</h4>	
 			<p>Pieces of Art are created by using the microbit accelerometer BLE service - Bluetooth Low Energy- paired with the browser.</p>
-
-			<p>In future versions we want to add other sensors to achieve the movement like: </p>
-
+			<h4>3.</h4>	
+			<p>In future versions we want to add other sensors to drive the drawing app, like: </p>
+			<h4>4.</h4>	
 			<ul>
 				<li>Web Gazer API - To control the LZR movement through AI Eye Tracking</li>
 				<li>Web Face API -  To Control the LZR movement through AI Facial Recognition</li>
-				<li>Service worker for offline support, and all the PWA bells and whistles</li>
+				<li>NextMind API - A non invasive human brain interface (...)</li>
 			</ul>
+			<h4>5.</h4>	
+			<p> Made with Love using the beautiful Svelte/Sapper javascript framework</p>
 
-			<p>I hope you enjoy it as much as I did building it!</p>
-			<p> Made with Love using the Framework Svelte/Sapper js - January 2020</p>
+			<p>> Bernat Ferragut | January 2020</p>
 
 			
 		`
@@ -61,7 +63,8 @@ const posts = [
 		title: '> HOW CAN I HELP?',
 		slug: 'how-can-i-get-involved',
 		html: `
-			<p>We're so glad you asked! Come on over to the <a href='https://github.com/sveltejs/svelte'>Svelte</a> and <a href='https://github.com/sveltejs/sapper'>Sapper</a> repos, and join us in the <a href='https://svelte.dev/chat'>Discord chatroom</a>. Everyone is welcome, especially you!</p>
+			<p>We're so glad you asked! Come on over to the LZRBIT github repo and join us.</p>
+			
 		`
 	}
 ];
