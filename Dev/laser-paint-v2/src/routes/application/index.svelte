@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
 
-	function pairMicrobit() {
+	function microbitScriptLoaded() {
 		console.log('PAIRED');
 	}
 </script>
@@ -94,6 +94,7 @@
 </style>
 
 <svelte:head>
+	<!-- <script src=“microBit.js" on:load={microbitScriptLoaded}></script> -->
 	<title>APPLICATION</title>
 </svelte:head>
 
