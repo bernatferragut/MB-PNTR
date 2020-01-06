@@ -57,47 +57,12 @@
 
 
 <style>
-	/* FLEX */
-	.flex-container {
-		display: flex;
-		align-items: center; 
-		justify-content: center;
-		flex-direction: column;
-		max-height: auto;
-	}
-
 	h1 {
 		color: var(--main-text-color);
 		font-family: 'IBM Plex Mono', monospace;
 		font-size: 12px;
 		background-color: var(--main-bg-color);
 		margin: 10px;
-	}
-	ul, li{
-		color: var(--main-text-color);
-		letter-spacing: 2px;
-		text-decoration: none;
-		background: var(--main-bg-color);
-		padding: 20px 5px;
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-	}
-
-	a {
-		color: var(--main-text-color);
-		letter-spacing: 2px;
-		text-decoration: none;
-		background: var(--main-bg-color);
-		padding: 20px 5px;
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-	}
-
-	a:hover {
-		color: var(--main-bg-color);
-		background: var(--main-text-color);
 	}
 
 	/* BUTTONS */
@@ -111,29 +76,18 @@
 		margin: 10px;
 		color: var(--main-text-color);
 	}
-
-	.btn-menu {
-		background-color:var(--main-bg-color);
-		border-radius: 4px;
-		border-width: 0.5px solid;
-		border-color: yellowgreen;
-		padding: 10px;
-		font-size: 14px;
-		margin: 10px;
-		color: yellow;
+	.flex-container {
+		display: flex;
+		align-items: center; 
+		justify-content: center;
+		flex-direction: column;
+		max-height: auto;
 	}
-
-	.btn-menu:hover, .btn:hover {
-		color: var(--main-bg-color);
-		background-color: var(--main-text-color);
-	}
-
 	.grid-container {
 		display: grid;
 		grid-template-columns: repeat(3, 10px );
 		grid-gap: 30px;
 	}
-
 	canvas {
 		width : 80%;
 		border-style: dotted;
@@ -143,8 +97,6 @@
 		padding: 10px 10px 10px;
 		margin: 15px;
 	}
-
-
 </style>
 
 <svelte:head>
