@@ -1,5 +1,5 @@
 <script>
-	import { uBit,isWebBluetoothEnabled,getSupportedProperties,toUTF8Array } from './_microBit.js';
+	import { uBit,isWebBluetoothEnabled} from './_microBit.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
 

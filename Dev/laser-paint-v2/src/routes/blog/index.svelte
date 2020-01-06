@@ -1,4 +1,6 @@
 <script context="module">
+	import { fade } from 'svelte/transition';
+
 	export function preload({ params, query }) {
 		return this.fetch(`blog.json`).then(r => r.json()).then(posts => {
 			return { posts };
