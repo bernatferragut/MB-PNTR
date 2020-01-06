@@ -3,35 +3,74 @@
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
 
+	let buttonText = ['PAIR MICROBIT','PAIRED'];
+	let paired = false;
+
 	let acc_x = 0;
 	let acc_y = 0;
 	let acc_z = 0;
-	let paired = false;
-	let buttonText = ['PAIR MICROBIT','PAIRED'];
+
+	let canvas;
+	let context;
+	let w = window.innerWidth;
+	let h = window.innerHeight;
 
 	let microbit = new uBit();
 	onMount(()=> {
 		console.log( 'microbit object mounted: ', microbit );
 	})
 
-	// button calls
+	// button microbit activation
 	function microbitPairing() {
-		//1.
+		//1.search
 		microbit.searchDevice();
-		//2.
+		//2.connect
 		microbit.onConnect( ()=> {
 			console.log("connected");
 			paired = true;
 			console.log("pared: true");
 		})
-		//3. 
+		//3.ble subscription
 		microbit.onBleNotify(function(){
 			acc_x = microbit.getAccelerometer().x;
 			acc_y = microbit.getAccelerometer().y;
 			acc_z = microbit.getAccelerometer().z;
-			console.log('subscribed to: ', acc_x, acc_y, acc_z);
+			// console.log('subscribed to: ', acc_x, acc_y, acc_z);
 		})
+
+		//4.start canvas
+		startCanvas();
 	}
+
+	async function startCanvas() {
+
+		if (paired === true) {
+				
+			context = await canvas.getContext('2d');
+
+			if (context === true) {
+
+				let frame;
+
+				(function loop() {
+					frame = requestAnimationFrame(loop);
+
+					console.log('canvas started')
+
+					 // Background Color
+					context.fillStyle = "#101010";
+					context.fillRect(0, 0, canvas.width , canvas.height);
+				}());
+
+				// return () => {
+				// 	cancelAnimationFrame(frame);
+				// };
+
+				} else { 
+					throw new Error('context was not loaded!!!');}
+				}
+		}
+
 </script>
 
 
@@ -68,7 +107,7 @@
 		grid-gap: 60px;
 	}
 	canvas {
-		width : 80%;
+		width : 100%;
 		border-style: dotted;
 		border-radius: 4px;
 		border-width: 1px;
@@ -101,13 +140,15 @@
             <p>z: {acc_z}</p>
         </div>
     </div>
+
 	<!-- CANVAS -->
 	<div>
-		<canvas class="canvas"></canvas>
+		<canvas 
+		bind:this={canvas}
+		width={w}
+		height={h}
+		></canvas>
 	</div>
 	{/if}
 </div>
-
-
-
 
