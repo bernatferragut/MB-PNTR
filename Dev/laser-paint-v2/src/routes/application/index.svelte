@@ -42,34 +42,27 @@
 		startCanvas();
 	}
 
-	async function startCanvas() {
+	function startCanvas() {
 
 		if (paired === true) {
 				
-			context = await canvas.getContext('2d');
+			context = canvas.getContext('2d');
 
-			if (context === true) {
+			let frame;
 
-				let frame;
-
-				(function loop() {
-					frame = requestAnimationFrame(loop);
-
-					console.log('canvas started')
+			(function loop() {
+				console.log('canvas started')
 
 					 // Background Color
-					context.fillStyle = "#101010";
-					context.fillRect(0, 0, canvas.width , canvas.height);
-				}());
+				context.fillStyle = "tomato";
+				context.fillRect(0, 0, 100 , 100);
 
-				// return () => {
-				// 	cancelAnimationFrame(frame);
-				// };
+				frame = requestAnimationFrame(loop);
+			}());
 
-				} else { 
-					throw new Error('context was not loaded!!!');}
-				}
 		}
+	}
+		
 
 </script>
 
