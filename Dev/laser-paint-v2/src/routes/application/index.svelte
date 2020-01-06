@@ -18,6 +18,20 @@
 	let microbit = new uBit();
 	onMount(()=> {
 		console.log( 'microbit object mounted: ', microbit );
+
+		context = canvas.getContext('2d');
+
+		let frame;
+
+		(function loop() {
+			console.log('canvas started')
+
+			// Draw Rectangle
+			context.fillStyle = "tomato";
+			context.fillRect(0, 0, 100 , 100);
+
+			frame = requestAnimationFrame(loop);
+		}());
 	})
 
 	// button microbit activation
@@ -39,28 +53,6 @@
 		})
 
 		//4.start canvas
-		startCanvas();
-	}
-
-	function startCanvas() {
-
-		if (paired === true) {
-				
-			context = canvas.getContext('2d');
-
-			let frame;
-
-			(function loop() {
-				console.log('canvas started')
-
-					 // Background Color
-				context.fillStyle = "tomato";
-				context.fillRect(0, 0, 100 , 100);
-
-				frame = requestAnimationFrame(loop);
-			}());
-
-		}
 	}
 		
 
@@ -117,14 +109,12 @@
 <div class="flex-container">
 	<h1>LZRBIT</h1>
 	<!-- BUTTON -->
-	{#if !paired}
 	<div>
 		<button 
 			class="btn" 
 			on:click={microbitPairing}
 			> {paired? buttonText[1]: buttonText[0]} </button>
 	</div>
-	{:else}
 	<!-- BLE SERVICE -->
 	<div class="flex-container">
         <div class="grid-container" >
@@ -133,7 +123,6 @@
             <p>z: {acc_z}</p>
         </div>
     </div>
-
 	<!-- CANVAS -->
 	<div>
 		<canvas 
@@ -142,6 +131,6 @@
 		height={h}
 		></canvas>
 	</div>
-	{/if}
+
 </div>
 
