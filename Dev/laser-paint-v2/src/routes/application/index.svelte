@@ -3,56 +3,35 @@
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
 
+	let acc_x = 0;
+	let acc_y = 0;
+	let acc_z = 0;
+	let paired = false;
+	let buttonText = ['PAIR MICROBIT','PAIRED'];
+
 	let microbit = new uBit();
 	onMount(()=> {
 		console.log( 'microbit object mounted: ', microbit );
 	})
 
-	// microbit loaded
-	function microbitScriptLoaded() {
-		console.log('PAIRED');
-	}
-	// search
-	function searchMicrobit(){
+	// button calls
+	function microbitPairing() {
+		//1.
 		microbit.searchDevice();
+		//2.
+		microbit.onConnect( ()=> {
+			console.log("connected");
+			paired = true;
+			console.log("pared: true");
+		})
+		//3. 
+		microbit.onBleNotify(function(){
+			acc_x = microbit.getAccelerometer().x;
+			acc_y = microbit.getAccelerometer().y;
+			acc_z = microbit.getAccelerometer().z;
+			console.log('subscribed to: ', acc_x, acc_y, acc_z);
+		})
 	}
-
-	// connected
-	let paired = false;
-
-	microbit.onConnect(function(){
-		console.log("connected");
-		paired = true;
-	})
-	// // disconnected
-	microbit.onDisconnect(function(){
-		console.log("disconnected");
-	});
-
-	// BLE subscription
-	let acc_x = 0;
-	let acc_y = 0;
-	let acc_z = 0;
-
-	microbit.onBleNotify(function(){
-		acc_x = microbit.getAccelerometer().x;
-		acc_y = microbit.getAccelerometer().y;
-		acc_z = microbit.getAccelerometer().z;
-		console.log('subscribed to: ', acc_x, acc_y, acc_z);
-	})
-
-
-	// async function getResult() {
-
-    //     let response = await fetch(``);
-    //     let text = await response.text();
-    //     let data = text;
-    //     return data;
-    // }
-
-    // function submitHandler(e) {
-    //     result = getResult();
-    // }
 </script>
 
 
@@ -85,8 +64,8 @@
 	}
 	.grid-container {
 		display: grid;
-		grid-template-columns: repeat(3, 10px );
-		grid-gap: 30px;
+		grid-template-columns: repeat(3, 50px );
+		grid-gap: 60px;
 	}
 	canvas {
 		width : 80%;
@@ -106,24 +85,27 @@
 <div class="flex-container">
 	<h1>LZRBIT</h1>
 	<!-- BUTTON -->
+	{#if !paired}
 	<div>
 		<button 
 			class="btn" 
-			on:click={microbitScriptLoaded}
-			> PAIR MICROBIT</button>
+			on:click={microbitPairing}
+			> {paired? buttonText[1]: buttonText[0]} </button>
 	</div>
+	{:else}
 	<!-- BLE SERVICE -->
 	<div class="flex-container">
         <div class="grid-container" >
-            <p>{acc_x}</p>
-            <p>{acc_y}</p>
-            <p>{acc_z}</p>
+            <p>x: {acc_x}</p>
+            <p>y: {acc_y}</p>
+            <p>z: {acc_z}</p>
         </div>
     </div>
 	<!-- CANVAS -->
 	<div>
 		<canvas class="canvas"></canvas>
 	</div>
+	{/if}
 </div>
 
 
