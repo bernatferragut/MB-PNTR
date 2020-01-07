@@ -4,6 +4,7 @@
 	import { fade } from 'svelte/transition';
 
 	let buttonText = ['PAIR MICROBIT','PAIRED'];
+	let visible = true;
 	let paired = false;
 
 	let acc_x = 0;
@@ -12,25 +13,58 @@
 
 	let canvas;
 	let context;
-	let w = window.innerWidth;
-	let h = window.innerHeight;
+	let w;
+	let h;
+	let frame;
+	  let colors = ['#8DDDF7','#B1A7F2','#B1A7F2','#E9A1F7','#AC77E4'];
 
 	let microbit = new uBit();
+
 	onMount(()=> {
-		console.log( 'microbit object mounted: ', microbit );
-
 		context = canvas.getContext('2d');
-
-		let frame;
-
+		// Resize
+		function resizeCanvas() {
+			w = window.innerWidth;
+			h = window.innerHeight;
+		}
+		// Dot object
+		class Dot {
+			// class attributes
+			constructor(x,y,s){
+				this.x = x | 0;
+				this.y = y | 0;
+				this.size = s | 2;
+			}
+			// class methods
+			on(){
+				context.fillStyle = 'red';
+				context.fillRect(this.x, this.y, this.size, this.size);
+			}
+			off(){
+				context.fillStyle = "#101010";
+				context.fillRect(this.x, this.y, this.size, this.size);
+			}
+			move(){
+				this.x += 1;
+			}
+		}
+		// *** Particle Object ***
+		let dot = new Dot(w/2,h/2,10,10);
+		// *** Background Color ***
+		context.fillStyle = "#101010";
+		context.fillRect(0, 0, canvas.w , canvas.h);
+		 // *** Animation ***
 		(function loop() {
-			console.log('canvas started')
-
-			// Draw Rectangle
-			context.fillStyle = "tomato";
-			context.fillRect(0, 0, 100 , 100);
-
+			// animation
 			frame = requestAnimationFrame(loop);
+
+			// Resize
+			resizeCanvas()
+			
+			// Drawing Dot
+			context.fillStyle = 'rgba(0,0,0,0.1)';
+			dot.on();
+			dot.move()
 		}());
 	})
 
@@ -51,11 +85,9 @@
 			acc_z = microbit.getAccelerometer().z;
 			// console.log('subscribed to: ', acc_x, acc_y, acc_z);
 		})
-
-		//4.start canvas
+		//4. button disappear
+		visible = false;
 	}
-		
-
 </script>
 
 
@@ -92,13 +124,12 @@
 		grid-gap: 60px;
 	}
 	canvas {
-		width : 100%;
+		width : 75vw;
+		/* height: 75; */
 		border-style: dotted;
 		border-radius: 4px;
 		border-width: 1px;
 		border-color: var(--main-text-color);
-		padding: 10px 10px 10px;
-		margin: 15px;
 	}
 </style>
 
@@ -109,22 +140,24 @@
 <div class="flex-container">
 	<h1>LZRBIT</h1>
 	<!-- BUTTON -->
+	{#if visible}
 	<div>
 		<button 
 			class="btn" 
 			on:click={microbitPairing}
 			> {paired? buttonText[1]: buttonText[0]} </button>
 	</div>
+	{/if}
 	<!-- BLE SERVICE -->
 	<div class="flex-container">
-        <div class="grid-container" >
+        <div class="grid-container">
             <p>x: {acc_x}</p>
             <p>y: {acc_y}</p>
             <p>z: {acc_z}</p>
         </div>
     </div>
 	<!-- CANVAS -->
-	<div>
+	<div hidden={paired? false: true}>
 		<canvas 
 		bind:this={canvas}
 		width={w}
