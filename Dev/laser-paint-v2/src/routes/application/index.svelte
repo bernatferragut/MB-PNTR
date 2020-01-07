@@ -2,44 +2,43 @@
 	import { uBit,isWebBluetoothEnabled} from './_microBit.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
-
+	// button vars
 	let buttonText = ['PAIR MICROBIT','PAIRED'];
 	let visible = true;
 	let paired = false;
-
+	// canvas vars
 	let canvas;
 	let context;
 	let w ;
 	let h;
 	let frame;
-
+	// microbit vars
+	let microbit = new uBit();
 	let acc_x = 0;
 	let acc_y = 0;
 	let acc_z = 0;
-
-	let microbit = new uBit();
 
 	onMount(()=> {
 		w = window.innerWidth;
 		h = window.innerHeight;
 		context = canvas.getContext('2d');
-		// Resize
+		// *** Resize *** 
 		function resizeCanvas() {
 			w = window.innerWidth;
 			h = window.innerHeight;
 		}
-		// Dot object
+		// *** Dot object *** 
 		class Dot {
 			// class attributes
-			constructor(x,y,s){
-				this.x = x | 0;
-				this.y = y | 0;
-				this.size = s | 2;
+			constructor(){
+				// this.x;
+				// this.y;
+				// this.size;
 			}
 			// class methods
-			on(){
+			on(x,y,size){
 				context.fillStyle = 'greenyellow';
-				context.fillRect(this.x, this.y, this.size, this.size);
+				context.fillRect(x, y, size, size);
 			}
 			off(){
 				context.fillStyle = "#101010";
@@ -51,7 +50,7 @@
 			draw(mx, my){
 				// style
 				context.strokeStyle = 'greenyellow';
-				context.lineWidth = 2;
+				context.lineWidth = 0.5;
 				context.lineCap = 'round'
 				// line
 				context.lineTo(mx,my);
@@ -60,13 +59,10 @@
 				context.moveTo(mx,my);
 			}
 		}
-		// *** Particle Object ***
-		let dot = new Dot(w/2,h/2,2);
+		// *** Particle Object *2
+		let dot = new Dot();
 		 // *** Animation ***
 		(function loop() {
-
-			// animation
-			frame = requestAnimationFrame(loop);
 			// Resize
 			resizeCanvas()
 			/* context composition combo
@@ -78,15 +74,16 @@
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// *** Background Color ***
-				// context.fillStyle = "#101010";
-				// context.fillRect(0, 0, w , h);
+				context.fillStyle = 'black';
+				context.fillRect(0, 0, w , h);
 				// *** Drawing Dot *** 
-				dot.on();
+				dot.on(w/2,h/2, 0.1);
 				let mx = dot.mapValues(acc_x,-1024,1024,0,w);
 				let my = dot.mapValues(acc_y,-1024,1024,0,h);
 				dot.draw(mx, my);
 			}
-			
+			// animation
+			frame = requestAnimationFrame(loop);
 		}());
 	})
 
@@ -186,6 +183,5 @@
 		height={h}
 		></canvas>
 	</div>
-
 </div>
 
