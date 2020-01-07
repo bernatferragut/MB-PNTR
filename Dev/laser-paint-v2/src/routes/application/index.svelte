@@ -7,20 +7,21 @@
 	let visible = true;
 	let paired = false;
 
+	let canvas;
+	let context;
+	let w ;
+	let h;
+	let frame;
+
 	let acc_x = 0;
 	let acc_y = 0;
 	let acc_z = 0;
 
-	let canvas;
-	let context;
-	let w;
-	let h;
-	let frame;
-	  let colors = ['#8DDDF7','#B1A7F2','#B1A7F2','#E9A1F7','#AC77E4'];
-
 	let microbit = new uBit();
 
 	onMount(()=> {
+		w = window.innerWidth;
+		h = window.innerHeight;
 		context = canvas.getContext('2d');
 		// Resize
 		function resizeCanvas() {
@@ -37,34 +38,35 @@
 			}
 			// class methods
 			on(){
-				context.fillStyle = 'red';
+				context.fillStyle = 'greenyellow';
 				context.fillRect(this.x, this.y, this.size, this.size);
 			}
 			off(){
 				context.fillStyle = "#101010";
 				context.fillRect(this.x, this.y, this.size, this.size);
 			}
-			move(){
-				this.x += 1;
+			move(acc_x, acc_y){
+				this.x = acc_x;
+				this.y = acc_y;
 			}
 		}
 		// *** Particle Object ***
-		let dot = new Dot(w/2,h/2,10,10);
-		// *** Background Color ***
-		context.fillStyle = "#101010";
-		context.fillRect(0, 0, canvas.w , canvas.h);
+		let dot = new Dot(w/2,h/2,2);
 		 // *** Animation ***
 		(function loop() {
 			// animation
 			frame = requestAnimationFrame(loop);
-
 			// Resize
 			resizeCanvas()
+			if(paired) {
+				// *** Background Color ***
+				// context.fillStyle = "#101010";
+				// context.fillRect(0, 0, w , h);
+				// *** Drawing Dot *** 
+				dot.on();
+				dot.move(acc_x, acc_y)
+			}
 			
-			// Drawing Dot
-			context.fillStyle = 'rgba(0,0,0,0.1)';
-			dot.on();
-			dot.move()
 		}());
 	})
 
