@@ -45,26 +45,46 @@
 				context.fillStyle = "#101010";
 				context.fillRect(this.x, this.y, this.size, this.size);
 			}
-			move(acc_x, acc_y){
-				this.x = acc_x;
-				this.y = acc_y;
+			mapValues(n, start1, stop1, start2, stop2) {
+    			return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
+  			}
+			draw(mx, my){
+				// style
+				context.strokeStyle = 'greenyellow';
+				context.lineWidth = 2;
+				context.lineCap = 'round'
+				// line
+				context.lineTo(mx,my);
+				context.stroke();
+				context.beginPath();
+				context.moveTo(mx,my);
 			}
 		}
 		// *** Particle Object ***
 		let dot = new Dot(w/2,h/2,2);
 		 // *** Animation ***
 		(function loop() {
+
 			// animation
 			frame = requestAnimationFrame(loop);
 			// Resize
 			resizeCanvas()
+			/* context composition combo
+			none, copy, destination-atop, destination-in, destination-out, 
+			destination-over, source-top, source-in, source-out, source-over, 
+			lighter, xor  */
+			context.globalCompositeOperation = "lighter";
+
+        	// context.globalAlpha = 0.25;
 			if(paired) {
 				// *** Background Color ***
 				// context.fillStyle = "#101010";
 				// context.fillRect(0, 0, w , h);
 				// *** Drawing Dot *** 
 				dot.on();
-				dot.move(acc_x, acc_y)
+				let mx = dot.mapValues(acc_x,-1024,1024,0,w);
+				let my = dot.mapValues(acc_y,-1024,1024,0,h);
+				dot.draw(mx, my);
 			}
 			
 		}());
