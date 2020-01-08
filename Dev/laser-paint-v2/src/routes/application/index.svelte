@@ -20,32 +20,31 @@
 	let acc_z = 0;
 
 	onMount(()=> {
-		w = window.innerWidth;
-		h = window.innerHeight;
-		context = canvas.getContext('2d');
-		// *** Resize *** 
+		// Resize
 		function resizeCanvas() {
 			w = window.innerWidth;
 			h = window.innerHeight;
 		}
 		resizeCanvas();
+		// Context 2d
+		context = canvas.getContext('2d');
 		// *** Particle Object *2
 		let brush = new Brush(context);
-		 // *** Animation ***
+		 // Animation
 		(function loop() {
 			// context composition: none, copy, destination-atop, destination-in, destination-out, destination-over, source-top, source-in, source-out, source-over, lighter, xor
 			context.globalCompositeOperation = "lighter";
         	// context.globalAlpha = 0.25;
 			if(paired) {
-				// *** Background Color ***
+				// Background Color
 				context.fillStyle = 'black';
 				context.fillRect(0, 0, w , h);
-				// *** Drawing Dot *** 
+				// Drawing Dot
 				let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 				let my = brush.mapValues(acc_y,-1024,1024,0,h);
 				brush.draw(mx, my, 0,1);
 			}
-			// animation
+			// Loop
 			frame = requestAnimationFrame(loop);
 		}());
 	})
