@@ -1,5 +1,6 @@
 <script>
-	import { uBit,isWebBluetoothEnabled} from './_microBit.js';
+	import { uBit} from './_microBit.js';
+	import { Brush } from './_brush.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
 	// button vars
@@ -27,60 +28,22 @@
 			w = window.innerWidth;
 			h = window.innerHeight;
 		}
-		// *** Dot object *** 
-		class Dot {
-			// class attributes
-			constructor(){
-				// this.x;
-				// this.y;
-				// this.size;
-			}
-			// class methods
-			on(x,y,size){
-				context.fillStyle = 'greenyellow';
-				context.fillRect(x, y, size, size);
-			}
-			off(){
-				context.fillStyle = "#101010";
-				context.fillRect(this.x, this.y, this.size, this.size);
-			}
-			mapValues(n, start1, stop1, start2, stop2) {
-    			return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
-  			}
-			draw(mx, my){
-				// style
-				context.strokeStyle = 'greenyellow';
-				context.lineWidth = 0.5;
-				context.lineCap = 'round'
-				// line
-				context.lineTo(mx,my);
-				context.stroke();
-				context.beginPath();
-				context.moveTo(mx,my);
-			}
-		}
+		resizeCanvas();
 		// *** Particle Object *2
-		let dot = new Dot();
+		let brush = new Brush(context);
 		 // *** Animation ***
 		(function loop() {
-			// Resize
-			resizeCanvas()
-			/* context composition combo
-			none, copy, destination-atop, destination-in, destination-out, 
-			destination-over, source-top, source-in, source-out, source-over, 
-			lighter, xor  */
+			// context composition: none, copy, destination-atop, destination-in, destination-out, destination-over, source-top, source-in, source-out, source-over, lighter, xor
 			context.globalCompositeOperation = "lighter";
-
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// *** Background Color ***
 				context.fillStyle = 'black';
 				context.fillRect(0, 0, w , h);
 				// *** Drawing Dot *** 
-				dot.on(w/2,h/2, 0.1);
-				let mx = dot.mapValues(acc_x,-1024,1024,0,w);
-				let my = dot.mapValues(acc_y,-1024,1024,0,h);
-				dot.draw(mx, my);
+				let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+				let my = brush.mapValues(acc_y,-1024,1024,0,h);
+				brush.draw(mx, my, 0,1);
 			}
 			// animation
 			frame = requestAnimationFrame(loop);
