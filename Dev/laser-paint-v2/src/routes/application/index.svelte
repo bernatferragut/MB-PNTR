@@ -37,7 +37,7 @@
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// line drawing
-				if( key === 'l') {
+				if(key === 'l'){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -55,6 +55,9 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_dot(mx,my);
 					context.beginPath(); // allows to start path from here without jumping
+				
+				} else if( key === ' '){
+					context.clearRect(0, 0, w, h);
 				// nothing drawing
 				} else {
 					// Background Color
@@ -196,9 +199,9 @@
 	<div class="flex-container">
         <div class="grid-container">
 			{#if key}
-				<button class="btn-menu">{ key === ' '? 'line' : 'dot' }</button>
+				<button class="btn-menu">{ key === 'l'? 'line' : 'dot' }</button>
 			{:else}
-				<button class="btn-menu">{ 'dot' }</button>
+				<button class="btn-menu">{ 'draw' }</button>
 			{/if}
             <p>x: {acc_x}</p>
             <p>y: {acc_y}</p>
