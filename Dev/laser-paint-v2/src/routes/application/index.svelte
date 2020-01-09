@@ -36,6 +36,7 @@
 			context.globalCompositeOperation = "lighter";
         	// context.globalAlpha = 0.25;
 			if(paired) {
+				// line drawing
 				if( key === ' ') {
 					// Background Color
 					context.fillStyle = 'black';
@@ -44,7 +45,8 @@
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_line(mx, my, 0,1);
-				} else {
+				// dot drawing
+				} else if(key === 'd'){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -53,6 +55,11 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_dot(mx,my);
 					context.beginPath(); // allows to start path from here without jumping
+				// nothing drawing
+				} else {
+					// Background Color
+					context.fillStyle = 'black';
+					context.fillRect(0, 0, w , h);
 				}
 			}
 			// Loop
