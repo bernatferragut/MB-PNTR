@@ -45,7 +45,13 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw(mx, my, 0,1);
 				} else {
-					
+					// Background Color
+					// context.fillStyle = 'black';
+					// context.fillRect(0, 0, w , h);
+					// Drawing Dot
+					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+					let my = brush.mapValues(acc_y,-1024,1024,0,h);
+					brush.pause(mx,my);   
 				}
 			}
 			// Loop
@@ -93,6 +99,15 @@
 
 
 <style>
+
+		/* FONTS */
+	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+
+	/* VARIABupdateLES */
+	:root {
+		--main-bg-color: #101010;
+		--main-text-color: greenyellow;
+	}
 	h1 {
 		color: var(--main-text-color);
 		font-family: 'IBM Plex Mono', monospace;
@@ -114,6 +129,7 @@
 	}
 
 	.btn-menu {
+		font-family: 'IBM Plex Mono', monospace;
 		background-color:var(--main-bg-color);
 		border-radius: 4px;
 		border-width: 0.5px solid;
@@ -172,14 +188,14 @@
 	<div class="flex-container">
         <div class="grid-container">
 			{#if key}
-				<button class="btn-menu">{ key === ' '? 'draw' : 'press' }</button>
+				<button class="btn-menu">{ key === ' '? 'line' : 'dot' }</button>
 			{:else}
-				<button class="btn-menu">{ 'press' }</button>
+				<button class="btn-menu">{ 'dot' }</button>
 			{/if}
             <p>x: {acc_x}</p>
             <p>y: {acc_y}</p>
             <p>z: {acc_z}</p>
-			<button class="btn-menu" on:click={saveDrawing}>&#x2193;</button>
+			<button class="btn-menu" on:click={saveDrawing}>save</button>
         </div>
     </div>
 	<!-- CANVAS -->

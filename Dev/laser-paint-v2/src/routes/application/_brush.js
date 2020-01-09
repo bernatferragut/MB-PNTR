@@ -3,6 +3,7 @@ export class Brush {
 	// class attributes
 	constructor(context){
 		this.context = context;
+		this.pausedSize = 1;
 		// this.y;
 		// this.size;
 	}
@@ -17,10 +18,15 @@ export class Brush {
 		this.context.stroke();
 		this.context.beginPath();
 		this.context.moveTo(mx,my);
-    }
+	}
+	pause(mx, my) {
+		// style
+		this.context.fillStyle = 'yellow';
+		// line
+		this.context.fillRect(mx, my, this.pausedSize,this.pausedSize);
+	}
     // mapping microbit values to screen sizes
     mapValues(n, start1, stop1, start2, stop2) {
         return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
   }
-    // Create different Strokes: Strok1, Stroke2, Stroke3...etc
 }
