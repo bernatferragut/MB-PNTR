@@ -39,8 +39,8 @@ const posts = [
 		html: `
 			<h4>1.</h4>
 			<p>To use this Application you will need a microbit and the Chrome Browser.
-			<p>First you need to download and upload this firmware on your BBC micro:bit board.</p>
-			<p>*The firmware was produced by bittysoftware.*</p>
+			<p>First you need to <a href="https://drive.google.com/uc?id=0B2Ud_NaMFsQSdm1BMVMtN3F4a3c&export=download">download and upload this firmware</a> on your BBC micro:bit board.</p>
+			<p>*The firmware was produced by bittysoftware.com*</p>
 			<h4>2.</h4>
 			<p>Keep in mind that web bluetooth API are still experimental and your OS and browser might not support the feature.</p>
 			<p>Use Google Chrome as the Browser - BLE API -  to make sure it will work.</p>

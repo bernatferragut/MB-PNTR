@@ -28,6 +28,10 @@
 
 	img{
 		width: 100%;
+		border-style: dotted;
+		border-radius: 4px;
+		border-width: 1px;
+		border-color: var(--main-text-color);
 	}
 </style>
 
@@ -40,8 +44,10 @@
 	<h1>DATA </h1>
 </div>
 <div class="flex-container">
-		<img alt='Tree' src='images/tree.png'>
-		<p >TREE 2020</p>
+		<div>
+			<img alt='Tree' src='images/bcn.png'>
+		</div>
+		<p >Barcelona 2020</p>
 </div>
 
 

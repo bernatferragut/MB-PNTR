@@ -37,7 +37,7 @@
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// line drawing
-				if( key === ' ') {
+				if( key === 'l') {
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -46,7 +46,7 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_line(mx, my, 0,1);
 				// dot drawing
-				} else if(key === 'd'){
+				} else if(key === 'p'){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
