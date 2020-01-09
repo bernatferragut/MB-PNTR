@@ -69,6 +69,17 @@
 		//4. button disappear
 		visible = false;
 	}
+	// button save drawing
+	function saveDrawing() {
+        console.log('saveDrawing');
+        // let finalCanvas = document.querySelector('#canvas');
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = canvas.toDataURL('image/png',1);
+        a.download = 'canvas-image.png';
+        a.click();
+        document.body.removeChild(a);
+    }
 </script>
 
 
@@ -92,6 +103,23 @@
 		margin: 10px;
 		color: var(--main-text-color);
 	}
+
+	.btn-menu {
+		background-color:var(--main-bg-color);
+		border-radius: 4px;
+		border-width: 0.5px solid;
+		border-color: yellowgreen;
+		text-align: center;
+		padding: 0px;
+		font-size: 14px;
+		margin: 6px;
+		color: yellow;
+	}
+
+	.btn-menu:hover, .btn:hover {
+		color: var(--main-bg-color);
+		background-color: var(--main-text-color);
+	}
 	.flex-container {
 		display: flex;
 		align-items: center; 
@@ -101,7 +129,7 @@
 	}
 	.grid-container {
 		display: grid;
-		grid-template-columns: repeat(3, 50px );
+		grid-template-columns: repeat(5, 50px );
 		grid-gap: 60px;
 	}
 	canvas {
@@ -132,9 +160,11 @@
 	<!-- BLE SERVICE -->
 	<div class="flex-container">
         <div class="grid-container">
+			<button class="btn-menu">&#x2193;</button>
             <p>x: {acc_x}</p>
             <p>y: {acc_y}</p>
             <p>z: {acc_z}</p>
+			<button class="btn-menu" on:click={saveDrawing}>&#x2193;</button>
         </div>
     </div>
 	<!-- CANVAS -->
