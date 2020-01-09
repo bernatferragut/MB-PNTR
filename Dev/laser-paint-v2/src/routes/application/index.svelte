@@ -46,8 +46,8 @@
 					brush.draw(mx, my, 0,1);
 				} else {
 					// Background Color
-					// context.fillStyle = 'black';
-					// context.fillRect(0, 0, w , h);
+					context.fillStyle = 'black';
+					context.fillRect(0, 0, w , h);
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
