@@ -36,13 +36,17 @@
 			context.globalCompositeOperation = "lighter";
         	// context.globalAlpha = 0.25;
 			if(paired) {
-				// Background Color
-				context.fillStyle = 'black';
-				context.fillRect(0, 0, w , h);
-				// Drawing Dot
-				let mx = brush.mapValues(acc_x,-1024,1024,0,w);
-				let my = brush.mapValues(acc_y,-1024,1024,0,h);
-				brush.draw(mx, my, 0,1);
+				if( key === ' ') {
+					// Background Color
+					context.fillStyle = 'black';
+					context.fillRect(0, 0, w , h);
+					// Drawing Dot
+					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+					let my = brush.mapValues(acc_y,-1024,1024,0,h);
+					brush.draw(mx, my, 0,1);
+				} else {
+					
+				}
 			}
 			// Loop
 			frame = requestAnimationFrame(loop);
@@ -79,7 +83,12 @@
         a.download = 'canvas-image.png';
         a.click();
         document.body.removeChild(a);
-    }
+	}
+	// handle keys down function
+	let key;
+	function handleKeydown(event) {
+		key = event.key;
+	}
 </script>
 
 
@@ -111,7 +120,7 @@
 		border-color: yellowgreen;
 		text-align: center;
 		padding: 0px;
-		font-size: 14px;
+		font-size: 10px;
 		margin: 6px;
 		color: yellow;
 	}
@@ -146,6 +155,8 @@
 	<title>LZRBTI-APP</title>
 </svelte:head>
 
+<svelte:window on:keydown={handleKeydown}/>
+
 <div class="flex-container">
 	<h1>LZRBIT</h1>
 	<!-- BUTTON -->
@@ -160,7 +171,11 @@
 	<!-- BLE SERVICE -->
 	<div class="flex-container">
         <div class="grid-container">
-			<button class="btn-menu">&#x2193;</button>
+			{#if key}
+				<button class="btn-menu">{ key === ' '? 'draw' : 'press' }</button>
+			{:else}
+				<button class="btn-menu">{ 'press' }</button>
+			{/if}
             <p>x: {acc_x}</p>
             <p>y: {acc_y}</p>
             <p>z: {acc_z}</p>
