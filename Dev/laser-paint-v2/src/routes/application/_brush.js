@@ -4,11 +4,9 @@ export class Brush {
 	constructor(context){
 		this.context = context;
 		this.pausedSize = 1;
-		// this.y;
-		// this.size;
 	}
 	// class methods
-	draw(mx, my, size){
+	draw_line(mx, my, size){
 		// style
 		this.context.strokeStyle = 'greenyellow';
 		this.context.lineWidth = size;
@@ -19,7 +17,7 @@ export class Brush {
 		this.context.beginPath();
 		this.context.moveTo(mx,my);
 	}
-	pause(mx, my) {
+	draw_dot(mx, my) {
 		// style
 		this.context.fillStyle = 'yellow';
 		// line

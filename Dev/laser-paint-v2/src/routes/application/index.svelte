@@ -43,7 +43,7 @@
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.draw(mx, my, 0,1);
+					brush.draw_line(mx, my, 0,1);
 				} else {
 					// Background Color
 					context.fillStyle = 'black';
@@ -51,7 +51,8 @@
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.pause(mx,my);   
+					brush.draw_dot(mx,my);
+					context.beginPath(); // allows to start path from here without jumping
 				}
 			}
 			// Loop
