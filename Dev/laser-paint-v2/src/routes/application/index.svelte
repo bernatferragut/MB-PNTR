@@ -37,7 +37,7 @@
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// line drawing
-				if(key === 'l'){
+				if(key === 'q'){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -46,18 +46,23 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_line(mx, my, 0,1);
 				// dot drawing
-				} else if(key === 'p'){
+				} else if(key === 'w'){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.draw_dot(mx,my);
+					brush.draw_point(mx,my);
 					context.beginPath(); // allows to start path from here without jumping
 				
 				} else if( key === ' '){
 					context.clearRect(0, 0, w, h);
+					// Drawing Axist
+					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+					let my = brush.mapValues(acc_y,-1024,1024,0,h);
+					// Draw axis
+					brush.draw_axis(mx,my, w, h);
 				// nothing drawing
 				} else {
 					// Background Color
@@ -169,6 +174,8 @@
 		grid-gap: 60px;
 	}
 	canvas {
+		font-family: 'IBM Plex Mono', monospace;
+		background-color:var(--main-bg-color);
 		width : 75vw;
 		/* height: 75; */
 		border-style: dotted;
