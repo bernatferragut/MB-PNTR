@@ -66,18 +66,12 @@
 					brush.draw_axis(mx,my, w, h);
 				// stop drawing
 				} else {
-					// Background Color
-					// context.fillStyle = '#ADFF2F';
-					// context.fillRect(0, 0, w , h);
-					// Click SPACE to START
-					// context.font = "18px IBM Plex Mono";
-					// context.fillStyle = 'yellow';
-					// context.textAlign = "center";
-					// context.fillText("SPACE -> Start - Reset", w/2, h/2);
-					// context.font = "21px IBM Plex Mono";
-					// context.fillText("TILT -> move x/y axis", w/2, h/2 + 40);
-					// context.fillText("Q -> draw lines", w/2, h/2 + 80);
-					// context.fillText("W -> draw points", w/2, h/2 + 120);
+					context.clearRect(0, 0, w, h);
+					// Drawing Axist
+					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+					let my = brush.mapValues(acc_y,-1024,1024,0,h);
+					// Draw axis
+					brush.draw_axis(mx,my, w, h);
 				}
 			}
 			// Loop
@@ -228,14 +222,15 @@
 	<!-- CANVAS -->
 
 	<div hidden={paired? false: true}>
-		<div class="flex-container">
-			<div> press SPACE to sart | press Q to draw lines | press W to draw points</div>
-		</div>
 		<canvas 
 		bind:this={canvas}
 		width={w}
 		height={h}
 		></canvas>
+		<div class="flex-container">
+			<div> [!] press Q to draw lines | press W to draw points | press SPACE to reset [!]</div>
+		</div>
 	</div>
+
 </div>
 
