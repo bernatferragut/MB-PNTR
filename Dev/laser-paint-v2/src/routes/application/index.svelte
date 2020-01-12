@@ -30,6 +30,7 @@
 		context = canvas.getContext('2d');
 		// *** Particle Object *2
 		let brush = new Brush(context);
+		context.imageSmoothingEnabled = true;
 		 // Animation
 		(function loop() {
 			// context composition: none, copy, destination-atop, destination-in, destination-out, destination-over, source-top, source-in, source-out, source-over, lighter, xor
@@ -63,11 +64,20 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					// Draw axis
 					brush.draw_axis(mx,my, w, h);
-				// nothing drawing
+				// stop drawing
 				} else {
 					// Background Color
-					context.fillStyle = 'black';
-					context.fillRect(0, 0, w , h);
+					// context.fillStyle = '#ADFF2F';
+					// context.fillRect(0, 0, w , h);
+					// Click SPACE to START
+					// context.font = "18px IBM Plex Mono";
+					// context.fillStyle = 'yellow';
+					// context.textAlign = "center";
+					// context.fillText("SPACE -> Start - Reset", w/2, h/2);
+					// context.font = "21px IBM Plex Mono";
+					// context.fillText("TILT -> move x/y axis", w/2, h/2 + 40);
+					// context.fillText("Q -> draw lines", w/2, h/2 + 80);
+					// context.fillText("W -> draw points", w/2, h/2 + 120);
 				}
 			}
 			// Loop
@@ -115,7 +125,6 @@
 
 
 <style>
-
 		/* FONTS */
 	@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
 
@@ -206,7 +215,7 @@
 	<div class="flex-container">
         <div class="grid-container">
 			{#if key}
-				<button class="btn-menu">{ key === 'l'? 'line' : 'dot' }</button>
+				<button class="btn-menu">{ key === ''? 'line' : 'dot' }</button>
 			{:else}
 				<button class="btn-menu">{ 'draw' }</button>
 			{/if}
