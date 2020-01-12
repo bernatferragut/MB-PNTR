@@ -64,7 +64,7 @@ const posts = [
 		slug: 'how-can-i-get-involved',
 		html: `
 			<p>We're so glad you asked! Come on over to the LZRBIT github repo and join us.</p>
-			<p> GITHUB REPO : https://github.com/bernatferragut/MB-PNTR"</p>
+			<p> GITHUB REPO : https://github.com/bernatferragut/lzrbit/blob/master/README.md</p>
 			
 		`
 	}
