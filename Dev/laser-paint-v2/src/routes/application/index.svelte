@@ -226,7 +226,11 @@
         </div>
     </div>
 	<!-- CANVAS -->
+
 	<div hidden={paired? false: true}>
+		<div class="flex-container">
+			<div> press SPACE to sart | press Q to draw lines | press W to draw points</div>
+		</div>
 		<canvas 
 		bind:this={canvas}
 		width={w}
