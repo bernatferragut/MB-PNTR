@@ -37,26 +37,26 @@ const posts = [
 		title: '> HOW TO USE LZRBIT',
 		slug: 'how-to-use-lzrbit',
 		html: `
-			<h4>1.</h4>
+			<h4>A.</h4>
 			<p>To use this Application you will need a microbit and the Chrome Browser.
 			<p>First you need to <a href="https://drive.google.com/uc?id=0B2Ud_NaMFsQSdm1BMVMtN3F4a3c&export=download">download and upload this firmware</a> on your BBC micro:bit board.</p>
 			<p>*The firmware was produced by bittysoftware.com*</p>
-			<h4>2.</h4>
+			<h4>B.</h4>
 			<p>Keep in mind that web bluetooth API are still experimental and your OS and browser might not support the feature.</p>
 			<p>Use Google Chrome as the Browser - BLE API -  to make sure it will work.</p>
-			<h4>3.</h4>
+			<h4>C.</h4>
 			<p>Once the firmware is uploaded to your microbit and you are using the Chrome Browser:</p>
-			<ul>
-				<li>Go to the LZRBIT APP section</li>
-				<li>Use the PAIR BUTTON to pair your microbit accelerometer witht the LZRBIT App.</li>
-				<li>Use drawing mode by touching the SPACE BAR and stop by releasing it.</li>
+			<ol>
+				<li>Go to the LZRBIT APP section.</li>
+				<li>Push key ‘Q’ to draw Lines.</li>
+				<li>Push key ‘W’ to draw Points.</li>
+				<li>Push SPACE bar to Reset.</li>
 				<li>Use the microbit x,y,z axis to draw on the canvas by rotating them.</li>
-				<li>Use the top right GUI parameters to mold your designs at will.</li>
 				<li>Draw your design with patience and love.</li>
-				<li>Save your design by clicking the SAVE button on the APP.</li>
-			</ul>
-			<h4>4.</h4>
-			<p>All your designs will be saved under the DATA section of the LZRBIT App.</p>
+				<li>Use the SAVE button to save your design.</li>
+			</ol>
+			<h4>D.</h4>
+			<p>All your designs will be saved under the DATA section of the LZRBIT App. (WIP)</p>
 		`
 	},
 	{
