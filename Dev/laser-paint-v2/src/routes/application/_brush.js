@@ -7,9 +7,9 @@ export class Brush {
 		this.axisSize = 3;
 	}
 	// class methods
-	draw_line(mx, my, size){
+	draw_line(mx, my, size, color){
 		// style
-		this.context.strokeStyle = 'greenyellow';
+		this.context.strokeStyle = color;
 		this.context.lineWidth = size;
 		this.context.lineCap = 'round'
 		// line
@@ -18,9 +18,9 @@ export class Brush {
 		this.context.beginPath();
 		this.context.moveTo(mx,my);
 	}
-	draw_point(mx, my) {
+	draw_point(mx, my, size, color) {
 		// style
-		this.context.fillStyle = 'yellow';
+		this.context.fillStyle = color;
 		// line
 		this.context.fillRect(mx, my, this.pausedSize,this.pausedSize);
 	}

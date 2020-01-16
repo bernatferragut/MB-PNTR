@@ -20,26 +20,27 @@
 	let acc_z = 0;
 	// dat.GUI
 	let brushParams = {
-		mainTitle : 'Brush Parameters',
-		connected : true,
+		name : 'Brush Parameters',
 		sizeLine : 0.1,
-		colorLine : 'greenyellow',
+		colorLine : '#9acd32',
 		sizePoint : 0.1,
-		colorPoint : 'greenYellow'
+		colorPoint : '#ff6347',
 	}
 
 	onMount(()=> {
 		import('dat.gui').then(dat => {
 			// loading dat.GUI
 			let gui = new dat.GUI();
-			console.log(gui);
+			gui.closed =  true;
 
-			gui.add(brushParams, "mainTitle");
-			gui.add(brushParams, "connected");
-			gui.add(brushParams, "sizeLine",0,10,0.1);
-			gui.add(brushParams, "colorLine");
-			gui.add(brushParams, "sizePoint",0,10,0.1);
-			gui.add(brushParams, "colorPoint");
+			let f1 = gui.addFolder('Line');
+			gui.add(brushParams, "sizeLine",0,1,0.1);
+			// gui.add(brushParams, "colorLine1");
+			gui.addColor(brushParams, "colorLine");
+
+			let f2 = gui.addFolder('Point');
+			gui.add(brushParams, "sizePoint",0,2,0.1);
+			gui.addColor(brushParams, "colorPoint");
 		})
 		// Resize
 		function resizeCanvas() {
@@ -66,7 +67,7 @@
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.draw_line(mx, my, brushParams.sizeLine);
+					brush.draw_line(mx, my, brushParams.sizeLine,brushParams.colorLine);
 				// dot drawing
 				} else if(key === 'w'){
 					// Background Color
@@ -75,9 +76,9 @@
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.draw_point(mx,my);
-					context.beginPath(); // allows to start path from here without jumping
-				
+					brush.draw_point(mx,my, brushParams.sizePoint, brushParams.colorPoint);
+					// allows to start path from here without jumping
+					context.beginPath(); 
 				} else if( key === ' '){
 					context.clearRect(0, 0, w, h);
 					// Drawing Axist
