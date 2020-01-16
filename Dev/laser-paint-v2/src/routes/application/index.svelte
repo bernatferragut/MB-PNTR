@@ -3,7 +3,6 @@
 	import { Brush } from './_brush.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
-	// import * as dat from 'dat.gui';
 	// button vars
 	let buttonText = ['PAIR MICROBIT','PAIRED'];
 	let visible = true;
@@ -30,9 +29,18 @@
 	}
 
 	onMount(()=> {
-		// loading dat.GUI
-		// let gui = new dat.GUI();
-		// console.log(gui);
+		import('dat.gui').then(dat => {
+			// loading dat.GUI
+			let gui = new dat.GUI();
+			console.log(gui);
+
+			gui.add(brushParams, "mainTitle");
+			gui.add(brushParams, "connected");
+			gui.add(brushParams, "sizeLine",0,10,0.1);
+			gui.add(brushParams, "colorLine");
+			gui.add(brushParams, "sizePoint",0,10,0.1);
+			gui.add(brushParams, "colorPoint");
+		})
 		// Resize
 		function resizeCanvas() {
 			w = window.innerWidth;
@@ -58,7 +66,7 @@
 					// Drawing Dot
 					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
-					brush.draw_line(mx, my, 0,1);
+					brush.draw_line(mx, my, brushParams.sizeLine);
 				// dot drawing
 				} else if(key === 'w'){
 					// Background Color
