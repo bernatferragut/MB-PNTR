@@ -3,6 +3,7 @@
 	import { Brush } from './_brush.js';
 	import { onMount } from 'svelte';	
 	import { fade } from 'svelte/transition';
+	// import * as dat from 'dat.gui';
 	// button vars
 	let buttonText = ['PAIR MICROBIT','PAIRED'];
 	let visible = true;
@@ -18,8 +19,20 @@
 	let acc_x = 0;
 	let acc_y = 0;
 	let acc_z = 0;
+	// dat.GUI
+	let brushParams = {
+		mainTitle : 'Brush Parameters',
+		connected : true,
+		sizeLine : 0.1,
+		colorLine : 'greenyellow',
+		sizePoint : 0.1,
+		colorPoint : 'greenYellow'
+	}
 
 	onMount(()=> {
+		// loading dat.GUI
+		// let gui = new dat.GUI();
+		// console.log(gui);
 		// Resize
 		function resizeCanvas() {
 			w = window.innerWidth;
