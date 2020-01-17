@@ -52,8 +52,9 @@ const posts = [
 				<li>Push key ‘W’ to draw Points.</li>
 				<li>Push SPACE bar to Reset.</li>
 				<li>Use the microbit x,y,z axis to draw on the canvas by rotating them.</li>
+				<li>Use the 'OPEN CONTROLS' panel -top righ-to modify size and color variables.</li>
 				<li>Draw your design with patience and love.</li>
-				<li>Use the SAVE button to save your design.</li>
+				<li>Use the 'SAVE' button to save your design.</li>
 			</ol>
 			<h4>D.</h4>
 			<p>All your designs will be saved under the DATA section of the LZRBIT App. (WIP)</p>
