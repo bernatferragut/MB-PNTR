@@ -28,8 +28,6 @@ const posts = [
 			<p> Made with Love using the beautiful Svelte/Sapper javascript framework</p>
 
 			<p>> Bernat Ferragut | January 2020</p>
-
-			
 		`
 	},
 
@@ -66,7 +64,6 @@ const posts = [
 		html: `
 			<p>We're so glad you asked! Come on over to the LZRBIT github repo and join us.</p>
 			<p> GITHUB REPO : https://github.com/bernatferragut/lzrbit/blob/master/README.md</p>
-			
 		`
 	}
 ];

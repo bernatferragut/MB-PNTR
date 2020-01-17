@@ -250,7 +250,8 @@
 		height={h}
 		></canvas>
 		<div class="flex-container">
-			<div> [!] press Q to draw lines | press W to draw points | press SPACE to reset [!]</div>
+			<div> [!] press Q -> lines | press W -> points | press SPACE -> reset [!]</div>
+			<div> Open Controls -> top right corner for size and color</div>
 		</div>
 	</div>
 

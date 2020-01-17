@@ -27,7 +27,7 @@
 	}
 
 	img{
-		width: 100%;
+		width: 100vh;
 		border-style: dotted;
 		border-radius: 4px;
 		border-width: 1px;
@@ -45,9 +45,9 @@
 </div>
 <div class="flex-container">
 		<div>
-			<img alt='Tree' src='images/bcn.png'>
+			<img alt='Tree' src='images/6.png'>
 		</div>
-		<p >Barcelona 2020</p>
+		<p >YOU MAKE LZRBIT - 2020</p>
 </div>
 
 
