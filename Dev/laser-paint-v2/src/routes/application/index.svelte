@@ -21,26 +21,43 @@
 	// dat.GUI
 	let brushParams = {
 		name : 'Brush Parameters',
+		line : false,
 		sizeLine : 0.1,
 		colorLine : '#9acd32',
+		point: false,
 		sizePoint : 0.1,
 		colorPoint : '#ff6347',
+		save : function() {
+			        const a = document.createElement('a');
+					document.body.appendChild(a);
+					a.href = canvas.toDataURL('image/png',1);
+					a.download = 'canvas-image.png';
+					a.click();
+					document.body.removeChild(a);
+				}
 	}
 
 	onMount(()=> {
 		import('dat.gui').then(dat => {
 			// loading dat.GUI
 			let gui = new dat.GUI();
-			gui.closed =  true;
-
+			if(paired ===  false) {
+				gui.closed =  true;
+			}
+			// LINE FOLDER
 			let f1 = gui.addFolder('Line');
+			gui.add(brushParams,"line");
 			gui.add(brushParams, "sizeLine",0,1,0.1);
 			// gui.add(brushParams, "colorLine1");
 			gui.addColor(brushParams, "colorLine");
-
+			// POINT FOLDER
 			let f2 = gui.addFolder('Point');
+			gui.add(brushParams,"point");
 			gui.add(brushParams, "sizePoint",0,2,0.1);
 			gui.addColor(brushParams, "colorPoint");
+			// SAVE FOLDER
+			gui.add(brushParams,"save");
+
 		})
 		// Resize
 		function resizeCanvas() {
@@ -60,7 +77,7 @@
         	// context.globalAlpha = 0.25;
 			if(paired) {
 				// line drawing
-				if(key === 'q'){
+				if(brushParams.line === true){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -69,7 +86,7 @@
 					let my = brush.mapValues(acc_y,-1024,1024,0,h);
 					brush.draw_line(mx, my, brushParams.sizeLine,brushParams.colorLine);
 				// dot drawing
-				} else if(key === 'w'){
+				} else if(brushParams.point === true){
 					// Background Color
 					context.fillStyle = 'black';
 					context.fillRect(0, 0, w , h);
@@ -79,6 +96,16 @@
 					brush.draw_point(mx,my, brushParams.sizePoint, brushParams.colorPoint);
 					// allows to start path from here without jumping
 					context.beginPath(); 
+
+				} else if ( brushParams.line === true && brushParams.point ===  true){
+					// Background Color
+					context.fillStyle = 'black';
+					context.fillRect(0, 0, w , h);
+					// Drawing Line && Dot
+					let mx = brush.mapValues(acc_x,-1024,1024,0,w);
+					let my = brush.mapValues(acc_y,-1024,1024,0,h);
+					brush.draw_line(mx, my, brushParams.sizeLine,brushParams.colorLine);
+					brush.draw_point(mx,my, brushParams.sizePoint, brushParams.colorPoint);
 				} else if( key === ' '){
 					context.clearRect(0, 0, w, h);
 					// Drawing Axist
@@ -231,7 +258,7 @@
 	<div class="flex-container">
         <div class="grid-container">
 			{#if key}
-				<button class="btn-menu">{ key === ''? 'line' : 'dot' }</button>
+				<button class="btn-menu">{ key === 'Q'? 'line' : 'dot' }</button>
 			{:else}
 				<button class="btn-menu">{ 'draw' }</button>
 			{/if}
