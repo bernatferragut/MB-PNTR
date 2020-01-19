@@ -26,7 +26,7 @@
 		sizeLine : 0.1,
 		colorLine : '#9acd32',
 		point: false,
-		sizePoint : 0.1,
+		sizePoint : 1,
 		colorPoint : '#ff6347',
 		save : function() {
 			        const a = document.createElement('a');
@@ -54,7 +54,7 @@
 			// POINT FOLDER
 			let f2 = gui.addFolder('Point');
 			gui.add(brushParams,"point");
-			gui.add(brushParams, "sizePoint",0,2,0.9);
+			gui.add(brushParams,"sizePoint",0,2,0.1);
 			gui.addColor(brushParams, "colorPoint");
 			// SAVE FOLDER
 			gui.add(brushParams,"save");
