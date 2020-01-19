@@ -46,11 +46,13 @@ const posts = [
 			<p>Once the firmware is uploaded to your microbit and you are using the Chrome Browser:</p>
 			<ol>
 				<li>Go to the LZRBIT APP section.</li>
-				<li>Push key ‘Q’ to draw Lines.</li>
-				<li>Push key ‘W’ to draw Points.</li>
-				<li>Push SPACE bar to Reset.</li>
-				<li>Use the microbit x,y,z axis to draw on the canvas by rotating them.</li>
+				<li>Take the microbit 'flat' on one of your hands.</li>
 				<li>Use the 'OPEN CONTROLS' panel -top righ-to modify size and color variables.</li>
+				<li>Press the Line checkbox to draw lines.</li>
+				<li>Press the Point checkbox to draw points.</li>
+				<li>Uncheck both to reset.</li>
+				<li>You can hide/show the 'Controls' by pressing 'h'</li>
+				<li>Use the microbit x,y,z axis to draw on the canvas by rotating them.</li>
 				<li>Draw your design with patience and love.</li>
 				<li>Use the 'SAVE' button to save your design.</li>
 			</ol>

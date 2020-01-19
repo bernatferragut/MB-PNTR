@@ -22,7 +22,7 @@ export class Brush {
 		// style
 		this.context.fillStyle = color;
 		// line
-		this.context.fillRect(mx, my, this.pausedSize,this.pausedSize);
+		this.context.fillRect(mx, my, size,size);
 	}
 	draw_axis(mx,my,w,h) {
 		// Background Color

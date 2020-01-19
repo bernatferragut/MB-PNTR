@@ -45,19 +45,16 @@
 			if(paired ===  false) {
 				gui.closed =  true;
 			}
-			// DRAWING FOLDER
-			let f0 = gui.addFolder('start | stop');
-			gui.add(brushParams, "drawing");
 			// LINE FOLDER
 			let f1 = gui.addFolder('Line');
 			gui.add(brushParams,"line");
-			gui.add(brushParams, "sizeLine",0,1,0.1);
+			gui.add(brushParams, "sizeLine",0,2,0.1);
 			// gui.add(brushParams, "colorLine1");
 			gui.addColor(brushParams, "colorLine");
 			// POINT FOLDER
 			let f2 = gui.addFolder('Point');
 			gui.add(brushParams,"point");
-			gui.add(brushParams, "sizePoint",0,2,0.1);
+			gui.add(brushParams, "sizePoint",0,2,0.9);
 			gui.addColor(brushParams, "colorPoint");
 			// SAVE FOLDER
 			gui.add(brushParams,"save");
@@ -262,7 +259,7 @@
 	<div class="flex-container">
         <div class="grid-container">
 			{#if key}
-				<button class="btn-menu">{ key === 'Q'? 'line' : 'dot' }</button>
+				<button class="btn-menu">{ brushParams.line? 'line' : 'dot' }</button>
 			{:else}
 				<button class="btn-menu">{ 'draw' }</button>
 			{/if}
@@ -281,8 +278,7 @@
 		height={h}
 		></canvas>
 		<div class="flex-container">
-			<div> [!] press Q -> lines | press W -> points | press SPACE -> reset [!]</div>
-			<div> Open Controls -> top right corner for size and color</div>
+			<div> [!] GO TO THE TOP RIGHT CORNER AND OPEN THE CONTROLS PANEL TO DRAW [!]</div>
 		</div>
 	</div>
 
