@@ -1,0 +1,131 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+
+/* VARIABupdateLES */
+:root {
+    --main-bg-color: #101010;
+    --main-text-color: greenyellow;
+}
+
+/* MAIN */
+body {
+    color: var(--main-text-color);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    background-color: var(--main-bg-color);
+    margin: 10px;
+}
+
+h1 {
+	color: var(--main-text-color);
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 10px;
+	letter-spacing: 8px;
+	background-color: var(--main-bg-color);
+	margin: 10px;
+}
+
+code {
+	font-family: menlo, inconsolata, monospace;
+	font-size: calc(1em - 2px);
+	color: var(--main-bg-color);
+	background-color: var(--main-text-color);
+	padding: 0.2em 0.4em;
+	border-radius: 2px;
+}
+
+a {
+    color: tomato;
+}
+
+a:hover {
+    color: yellow;
+    cursor: pointer;
+}
+
+/* Background Styles Only */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.grid-container {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+
+.grid-item {
+  position: relative;
+  font-size: 25px;
+  padding: 20px;
+  padding-top: 50px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  border: 1px solid var(--main-text-color);
+}
+
+.grid-item:nth-child(odd) {
+  background-color: var(--main-bg-color);
+}
+
+.grid-item::before {
+  content: 'Grid Item';
+  position: absolute;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 10px;
+  left: 15px;
+}
+
+.grid-item::after {
+  position: absolute;
+  font-size: 1rem;
+  top: 10px;
+  right: 15px;
+  font-weight: bold;
+}
+
+.grid-item-1::after {
+  content: '1';
+}
+
+.grid-item-2::after {
+  content: '2';
+}
+
+.grid-item-3::after {
+  content: '3';
+}
+
+.grid-item-4::after {
+  content: '4';
+}
+
+.grid-item-5::after {
+  content: '5';
+}
+
+.grid-item-6::after {
+  content: '6';
+}
+
+.grid-item-7::after {
+  content: '7';
+}
+
+.grid-item-8::after {
+  content: '8';
+}
+
+.grid-item-9::after {
+  content: '9';
+}
+
+.grid-item-10::after {
+  content: '10';
+}
+
+.grid-item-11::after {
+  content: '11';
+}
