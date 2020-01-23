@@ -45,10 +45,6 @@ a:hover {
 
 /* Background Styles Only */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 .grid-container {
   position: relative;
   padding: 10px;
@@ -56,89 +52,86 @@ a:hover {
   /* GRID */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 30px 30px 700px 30px 30px;
+  grid-template-rows: auto auto 60vh auto auto;
   /* ITEMS INSIDE */
   justify-content: center;
   align-content: center;
   /* height: 100vh; */
 }
 
-.grid-item {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+.grid-item-1{
+    border: 1px solid var(--main-text-color);
+    position: relative;
+    font-size: 10px;
+    padding: 20px;
+    padding-top: 50px;
+}
+
+.grid-item-2 {
   border: 1px solid var(--main-text-color);
   position: relative;
   font-size: 10px;
   padding: 20px;
-  padding-top: 50px
+  padding-top: 50px;
+}
+
+.grid-item-3 {
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.grid-item-4 {
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.grid-item-5 {
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.grid-item-6 {
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
 }
 
 .grid-item-7 {
   grid-column: span 3;
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
 }
 
 .grid-item-8 {
   grid-column: span 3;
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
 }
 
 .grid-item-9 {
   grid-column: span 3;
+  border: 1px solid var(--main-text-color);
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 50px;
 }
 
-.grid-item:nth-child(odd) {
-  background-color: var(--main-bg-color);
-}
-
-.grid-item::before {
-  content: 'Grid Item';
-  position: absolute;
-  font-size: 0.75rem;
-  font-weight: bold;
-  top: 5px;
-  left: 5px;
-}
-
-.grid-item::after {
-  position: absolute;
-  font-size: 0.75rem;
-  top: 5px;
-  right: 5px;
-  font-weight: bold;
-}
-
-.grid-item-1::after {
-  content: '1';
-}
-
-.grid-item-2::after {
-  content: '2';
-}
-
-.grid-item-3::after {
-  content: '3';
-}
-
-.grid-item-4::after {
-  content: '4';
-}
-
-.grid-item-5::after {
-  content: '5';
-}
-
-.grid-item-6::after {
-  content: '6';
-}
-
-.grid-item-7::after {
-  content: '7';
-}
-
-.grid-item-8::after {
-  content: '8';
-}
-
-.grid-item-9::after {
-  content: '9';
-}
 
