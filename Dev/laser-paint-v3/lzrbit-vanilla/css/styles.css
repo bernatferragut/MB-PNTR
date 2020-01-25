@@ -45,16 +45,26 @@ p {
   color: var(--main-text-color);
 }
 .btn:hover {
-  color: var(--main-bg-color);
-  background-color: var(--main-text-color);
+  color: var(--main-text-color);
+  background-color: var(--main-text-color2);
 }
 
+a {
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+a:hover { 
+  color: var(--main-text-color2);
+  text-decoration: none;
+}
 /* CSS GRID */
 
 .grid-container {
   position: relative;
-  padding: 10px;
-  width: 100%;
+  padding: 20px;
+  width: 95vw;
+  height: 95vh;
   /* GRID */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
