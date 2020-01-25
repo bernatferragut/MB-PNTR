@@ -1,19 +1,46 @@
 // JS
 const PARAMS = {
+    acc : {x : 0, y : 0},
     line : false,
     lineWidth : 0.1,
-    lineColor : 'greenyellow',
+    lineColor : {r: 173, g: 255, b: 47},
     dot : false,
     dotWidth : 0.25,
-    dotColor : 'tomato'
+    dotColor : {r: 255, g: 99, b: 71},
 }
 
-// TWEAKPANE
-const pane = new Tweakpane({
-    title: 'Parameters',
+// TWEAKPANE - ACCELEROMETER
+const paneAcc = new Tweakpane({
+    container: document.getElementById('acc'),
+    title: 'Microbit accelerometer',
+});
+paneAcc.addInput(PARAMS, 'acc',{ label: 'accel(x,y)'});
+// TWEAKPANE - BUTTON
+paneAcc.addButton({
+    title: 'Save Galaxy',
+  }).on('click', (value) => {
+    console.log(value);
+  });
+// TWEAKPANE - LINE
+const paneLine = new Tweakpane({
     container: document.getElementById('line'),
 });
 // console.log(paneLine);
-pane.addInput(PARAMS, 'lineWidth');
+paneLine.addInput(PARAMS, 'line');
+paneLine.addInput(PARAMS, 'lineWidth', {
+    min : 0,
+    max : 3
+});
+paneLine.addInput(PARAMS, 'lineColor');
 
-pane.refresh();
+// TWEAKPANE - DOT
+const paneDot = new Tweakpane({
+    container: document.getElementById('dot'),
+});
+// console.log(paneLine);
+paneDot.addInput(PARAMS, 'dot');
+paneDot.addInput(PARAMS, 'dotWidth', {
+    min : 0,
+    max : 3
+});
+paneDot.addInput(PARAMS, 'dotColor');
