@@ -90,7 +90,7 @@ a {
   text-decoration: none;
 }
 
-a:hover { updat
+a:hover { 
   color: var(--main-text-color2);
   text-decoration: none;
 }
@@ -100,21 +100,19 @@ a:hover { updat
   position: relative;
   padding: 20px;
   width: 95vw;
-  height: 95vh;
   /* GRID */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto 75vh auto auto;
+  grid-template-rows: auto auto 65vh auto auto;
   /* ITEMS INSIDE */
   justify-content: center;
   align-content: center;
-  /* height: 100vh; */
 }
 
 .grid-item-1{
     position: relative;
     padding: 20px;
-    padding-top: 40px;
+    padding-top: 10px;
 }
 
 .grid-item-2 {
@@ -129,7 +127,7 @@ a:hover { updat
   position: relative;
   font-size: 10px;
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
 .grid-item-4 {
@@ -158,6 +156,7 @@ a:hover { updat
   position: relative;
   font-size: 10px;
   padding-top: 0px;
+  height: auto;
 }
 
 .grid-item-8 {
@@ -188,7 +187,6 @@ a:hover { updat
   align-items: center; 
   justify-content: center;
   flex-direction: column;
-  max-height: auto;
 }
 
 /* TWEAKPANE */
