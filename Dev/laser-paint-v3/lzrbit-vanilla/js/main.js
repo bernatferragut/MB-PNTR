@@ -15,7 +15,10 @@ const paneAcc = new Tweakpane({
     title: 'Microbit accelerometer',
 });
 paneAcc.addInput(PARAMS, 'acc',{ label: 'accel(x,y)'});
-// TWEAKPANE - BUTTON
+// TWEAKPANE - SEPARATOR
+// paneAcc.addSeparator();
+// paneAcc.addSeparator();
+// TWEAKPANE - BUTTON SAVE
 paneAcc.addButton({
     title: 'Save Galaxy',
   }).on('click', (value) => {
@@ -24,6 +27,7 @@ paneAcc.addButton({
 // TWEAKPANE - LINE
 const paneLine = new Tweakpane({
     container: document.getElementById('line'),
+    // title: 'Line Parameters',
 });
 // console.log(paneLine);
 paneLine.addInput(PARAMS, 'line');
@@ -36,6 +40,7 @@ paneLine.addInput(PARAMS, 'lineColor');
 // TWEAKPANE - DOT
 const paneDot = new Tweakpane({
     container: document.getElementById('dot'),
+    // title: 'Dot Parameters',
 });
 // console.log(paneLine);
 paneDot.addInput(PARAMS, 'dot');

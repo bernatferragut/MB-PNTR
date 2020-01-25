@@ -13,11 +13,11 @@
     --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
     
     /* Button-like control colors */
-    --tp-button-background-color: black;
+    --tp-button-background-color: yellowgreen;
     --tp-button-background-color-active: hsl(0, 0%, 85%);
     --tp-button-background-color-focus: tomato;
     --tp-button-background-color-hover: tomato;
-    --tp-button-foreground-color: greenyellow;
+    --tp-button-foreground-color: black;
     
     /* Folder colors */
     --tp-folder-background-color: hsl(0, 0%, 10%);
@@ -81,8 +81,8 @@ p {
   color: var(--main-text-color);
 }
 .btn:hover {
-  color: var(--main-text-color);
-  background-color: var(--main-text-color2);
+  color: var(--main-bg-color);
+  background-color: var(--main-text-color);
 }
 
 a {
@@ -90,7 +90,7 @@ a {
   text-decoration: none;
 }
 
-a:hover { 
+a:hover { updat
   color: var(--main-text-color2);
   text-decoration: none;
 }
