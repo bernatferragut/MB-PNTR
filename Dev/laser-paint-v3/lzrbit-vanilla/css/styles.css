@@ -9,7 +9,7 @@
 
     /* TWEAKPANE - THEME BLACK */
       /* Base colors */
-    --tp-base-background-color: hsl(0, 0%, 0%);
+    --tp-base-background-color: hsl(0, 0%, 10%);
     --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
     
     /* Button-like control colors */
@@ -27,10 +27,10 @@
     --tp-folder-foreground-color: greenyellow;
     
     /* Input control colors */
-    --tp-input-background-color: hsl(0, 0%, 10%);
-    --tp-input-background-color-active: hsl(0, 0%, 25%);
+    --tp-input-background-color: hsl(0, 0%,  0%);
+    --tp-input-background-color-active: hsl(0, 0%, 15%);
     --tp-input-background-color-focus: hsl(0, 0%, 20%);
-    --tp-input-background-color-hover: hsl(0, 0%, 15%);
+    --tp-input-background-color-hover: tomato;
     --tp-input-foreground-color: greenyellow;
     --tp-input-guide-color: hsla(0, 0%, 100%, 5%);
     
@@ -70,6 +70,15 @@ p {
 #z {
   color: var(--main-text-color2);
 }
+
+.frame{
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+}
+
 .btn {
   background-color:var(--main-bg-color);
   border-radius: 4px;
@@ -86,12 +95,13 @@ p {
 }
 
 a {
-  color: var(--main-text-color);
+  color: var(--main-text-color2);
   text-decoration: none;
 }
 
 a:hover { 
-  color: var(--main-text-color2);
+  color: var(--main-text-color
+  );
   text-decoration: none;
 }
 /* CSS GRID */
@@ -113,13 +123,6 @@ a:hover {
     position: relative;
     padding: 20px;
     padding-top: 10px;
-}
-
-.grid-item-2 {
-  /* font-size: 0.5em;
-  position: relative;
-  padding: 20px;
-  padding-top: 10px; */
 }
 
 .grid-item-3 {
@@ -163,22 +166,12 @@ a:hover {
   grid-column: span 3;
   position: relative;
   padding: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
   height: 50%;
   color: var(--main-text-color2);
   text-align: center;
   font-size: 0.5em;
   letter-spacing: 8px;
-}
-
-.grid-item-9 {
-  grid-column: span 3;
-  position: relative;
-  /* margin-top: -150px; */
-  font-size: 0.5em;
-  padding: 40px;
-  padding-bottom: 100px;
-  text-align: center;
 }
 
 /* FLEX CONTAINER */
@@ -188,20 +181,4 @@ a:hover {
   justify-content: center;
   flex-direction: column;
 }
-
-/* TWEAKPANE */
-
-#acc {
-  color: var(--tp-base-background-color);
-  font-family: var(--tp-font-familty);
-}
-
-#line {
-  color: var(--tp-base-background-color);
-}
-
-#dot {
-  color: var(--tp-base-background-color);
-}
-
 
