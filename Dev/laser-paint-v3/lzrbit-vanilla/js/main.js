@@ -1,7 +1,8 @@
 console.log('1.js-connected');
 //////////////// CONTROL PARAMS ///////////
 let PARAMS = {
-    acc : {x : 0, y : 0},
+    x : 0, 
+    y : 0,
     line : false,
     lineWidth : 0.1,
     lineColor : '#9acd32',
@@ -12,7 +13,7 @@ let PARAMS = {
 //////////////// CONTROL PARAMS ///////////
 
 //////////////// TWEAKPANE ////////////////
-// TWEAKPANE - DOT
+// TWEAKPANE - INPUT - DOT
 const paneDot = new Tweakpane({
     container: document.getElementById('dot'),
 });
@@ -28,7 +29,7 @@ paneDot.on('change', (value) => {
     console.log( 'dot: ', value);
 })
 
-// TWEAKPANE - LINE
+// TWEAKPANE - INPUT - LINE
 const paneLine = new Tweakpane({
     container: document.getElementById('line'),
 });
@@ -45,16 +46,15 @@ paneLine.on('change', (value) => {
     console.log( 'line: ', value);
 })
 
-// TWEAKPANE - ACCELEROMETER
+// TWEAKPANE - MONITOR - ACCELEROMETER
 const paneAcc = new Tweakpane({
     container: document.getElementById('acc'),
-    title: 'MICROBIT ACCELEROMETER',
 });
-paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
+// paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
+paneAcc.addMonitor(PARAMS, 'x', {label : 'X ACCELERATION'});
+paneAcc.addMonitor(PARAMS, 'y', {label : 'Y ACCELERATION'});
 // panelAcc - CHANGES
-paneAcc.on('change', (value) => {
-    console.log( 'accel: ', value);
-})
+
 
 // TWEAKPANE - BUTTON SAVE
 paneAcc.addButton({
@@ -81,8 +81,8 @@ function microbitPairing() {
     })
     //3.ble subscription
     microbit.onBleNotify(function(){
-        PARAMS.acc.x = microbit.getAccelerometer().x;
-        PARAMS.acc.y = microbit.getAccelerometer().y;
+        PARAMS.x = microbit.getAccelerometer().x;
+        PARAMS.y = microbit.getAccelerometer().y;
         // PARAMS.acc(x,y)
         // console.log(PARAMS.acc.x);
         // console.log(PARAMS.acc.y);
@@ -111,15 +111,15 @@ let frame,mx,my;
     if(isPaired){
         if(PARAMS.dot === true){
             // Drawing Dot
-            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            mx = brush.mapValues(PARAMS.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.y,-1024,1024,0,h);
             brush.drawDot(mx,my, PARAMS.dotWidth, PARAMS.dotColor);
 
         // dot drawing
         }else if(PARAMS.line === true){
             // Drawing Line
-            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            mx = brush.mapValues(PARAMS.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.y,-1024,1024,0,h);
             brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);   
             // allows to start path from here without jumping
             // ctx.beginPath();
@@ -128,8 +128,8 @@ let frame,mx,my;
             // nothing drawing
             ctx.clearRect(0, 0, w, h);
             // Drawing Axist
-            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            mx = brush.mapValues(PARAMS.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.y,-1024,1024,0,h);
             // Draw axis
             brush.drawAxis(mx,my, w, h);
         }
