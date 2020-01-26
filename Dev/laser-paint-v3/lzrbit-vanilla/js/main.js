@@ -9,43 +9,44 @@ const PARAMS = {
     dotColor : {r: 255, g: 99, b: 71},
 }
 
-// TWEAKPANE - ACCELEROMETER
-const paneAcc = new Tweakpane({
-    container: document.getElementById('acc'),
-    title: 'Microbit accelerometer',
-});
-paneAcc.addInput(PARAMS, 'acc',{ label: 'accel(x,y)'});
-// TWEAKPANE - SEPARATOR
-// paneAcc.addSeparator();
-// paneAcc.addSeparator();
-// TWEAKPANE - BUTTON SAVE
-paneAcc.addButton({
-    title: 'Save Galaxy',
-  }).on('click', (value) => {
-    console.log(value);
-  });
-// TWEAKPANE - LINE
-const paneLine = new Tweakpane({
-    container: document.getElementById('line'),
-    // title: 'Line Parameters',
-});
-// console.log(paneLine);
-paneLine.addInput(PARAMS, 'line');
-paneLine.addInput(PARAMS, 'lineWidth', {
-    min : 0,
-    max : 3
-});
-paneLine.addInput(PARAMS, 'lineColor');
-
+//// TWEAKPANE /////
 // TWEAKPANE - DOT
 const paneDot = new Tweakpane({
     container: document.getElementById('dot'),
     // title: 'Dot Parameters',
 });
 // console.log(paneLine);
-paneDot.addInput(PARAMS, 'dot');
+paneDot.addInput(PARAMS, 'dot', {label : 'DOT'});
 paneDot.addInput(PARAMS, 'dotWidth', {
     min : 0,
-    max : 3
+    max : 3,
+    label : 'DOT WIDTH'
 });
-paneDot.addInput(PARAMS, 'dotColor');
+paneDot.addInput(PARAMS, 'dotColor', {label : 'DOT COLOR'});
+
+// TWEAKPANE - LINE
+const paneLine = new Tweakpane({
+    container: document.getElementById('line'),
+});
+// console.log(paneLine);
+paneLine.addInput(PARAMS, 'line',{label : 'LINE'});
+paneLine.addInput(PARAMS, 'lineWidth', {
+    min : 0,
+    max : 3,
+    label : 'LINE WIDTH'
+});
+paneLine.addInput(PARAMS, 'lineColor', {label : 'LINE COLOR'});
+
+// TWEAKPANE - ACCELEROMETER
+const paneAcc = new Tweakpane({
+    container: document.getElementById('acc'),
+    title: 'MICROBIT ACCELEROMETER',
+});
+paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
+// TWEAKPANE - BUTTON SAVE
+paneAcc.addButton({
+    title: 'Save Galaxy',
+  }).on('click', (value) => {
+    console.log(value);
+  });
+  //// TWEAKPANE /////
