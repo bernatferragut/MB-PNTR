@@ -106,11 +106,8 @@ let frame;
 
 // Animation
 (function loop() {
-    // context composition: none, copy, destination-atop, destination-in, destination-out, destination-over, source-top, source-in, source-out, source-over, lighter, xor
+    // LZR add composite filter
     ctx.globalCompositeOperation = "lighter";
-
-
-
     // line drawing
     if(PARAMS.line){
         // Background Color
@@ -120,7 +117,7 @@ let frame;
         let mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
         let my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
         brush.draw_line(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
-        // dot drawing
+    // dot drawing
     } else if(PARAMS.dot){
         // Background Color
         ctx.fillStyle = 'black';
@@ -131,6 +128,7 @@ let frame;
         brush.draw_point(mx,my, PARAMS.dotWidth, PARAMS.dotColor);
         // allows to start path from here without jumping
         ctx.beginPath(); 
+    // nothing drawing
     } else {
         ctx.clearRect(0, 0, w, h);
         // Drawing Axist
@@ -142,7 +140,6 @@ let frame;
     // Loop
     frame = requestAnimationFrame(loop);
 }());
-
 
 // resize canvas
 window.addEventListener('resize', resizeCanvas);
