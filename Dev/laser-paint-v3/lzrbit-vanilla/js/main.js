@@ -4,10 +4,10 @@ let PARAMS = {
     acc : {x : 0, y : 0},
     line : false,
     lineWidth : 0.1,
-    lineColor : {r: 173, g: 255, b: 47},
+    lineColor : '#9acd32',
     dot : false,
     dotWidth : 0.25,
-    dotColor : {r: 255, g: 99, b: 71},
+    dotColor : '#ff6347',
 }
 //////////////// CONTROL PARAMS ///////////
 
@@ -95,48 +95,46 @@ function microbitPairing() {
 //////////////// MICROBIT PAIRING /////////
 
 //////////////// CANVAS ///////////////////
-const canvas = document.querySelector('canvas');
+const canvas = document.querySelector('#canvas');
 const ctx =  canvas.getContext('2d');
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
 let brush = new Brush(ctx);
-console.log('Params:', PARAMS.acc.y)
-let frame;
-
+let frame,mx,my;
 
 // Animation
 (function loop() {
     // LZR add composite filter
     ctx.globalCompositeOperation = "lighter";
-    // line drawing
-    if(PARAMS.line){
-        // Background Color
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, w , h);
-        // Drawing Dot
-        let mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-        let my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
-        brush.draw_line(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
-    // dot drawing
-    } else if(PARAMS.dot){
-        // Background Color
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, w , h);
-        // Drawing Dot
-        let mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-        let my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
-        brush.draw_point(mx,my, PARAMS.dotWidth, PARAMS.dotColor);
-        // allows to start path from here without jumping
-        ctx.beginPath(); 
-    // nothing drawing
-    } else {
-        ctx.clearRect(0, 0, w, h);
-        // Drawing Axist
-        let mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
-        let my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
-        // Draw axis
-        brush.draw_axis(mx,my, w, h);
+    console.log
+    // Drawing
+    if(isPaired){
+        if(PARAMS.dot === true){
+            // Drawing Dot
+            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            brush.drawDot(mx,my, PARAMS.dotWidth, PARAMS.dotColor);
+
+        // dot drawing
+        }else if(PARAMS.line === true){
+            // Drawing Line
+            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);   
+            // allows to start path from here without jumping
+            // ctx.beginPath();
+
+        } else {
+            // nothing drawing
+            ctx.clearRect(0, 0, w, h);
+            // Drawing Axist
+            mx = brush.mapValues(PARAMS.acc.x,-1024,1024,0,w);
+            my = brush.mapValues(PARAMS.acc.y,-1024,1024,0,h);
+            // Draw axis
+            brush.drawAxis(mx,my, w, h);
+        }
     }
+
     // Loop
     frame = requestAnimationFrame(loop);
 }());
