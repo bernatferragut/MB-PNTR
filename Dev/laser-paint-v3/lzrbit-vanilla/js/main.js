@@ -1,4 +1,27 @@
 console.log('1.js-connected');
+
+//////////////// FIREBASE //////////////
+// Your web app's Firebase configuration
+let firebaseConfig = {
+	apiKey: "AIzaSyBEjTnvCCkM4bRr73PJrCbC3HQ46p6cK5I",
+    authDomain: "lzrbit-db.firebaseapp.com",
+    databaseURL: "https://lzrbit-db.firebaseio.com",
+    projectId: "lzrbit-db",
+    storageBucket: "lzrbit-db.appspot.com",
+    messagingSenderId: "488933348339",
+    appId: "1:488933348339:web:eb448d3c1c2d26b3973886",
+    measurementId: "G-TBC5QYT0H4"
+};
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+//   firebase.analytics();
+
+// Firebase constants
+let firestore = firebase.firestore();
+let docRef = firestore.doc('images/imgData');
+
+//////////////// FIREBASE //////////////
+
 //////////////// CONTROL PARAMS ///////////
 let PARAMS = {
 	x: 0,
@@ -61,7 +84,7 @@ paneAcc
 		title: 'Save Galaxy'
 	})
 	.on('click', () => {
-		console.log('click detected');
+		// download the galaxy to your desktop
 		saveDrawing();
 	});
 //////////////// TWEAKPANE ////////////////
@@ -144,15 +167,38 @@ resizeCanvas();
 
 // save drawing
 function saveDrawing() {
-	console.log('saveDrawing');
-	// let finalCanvas = document.querySelector('#canvas');
+	// download image
+	console.log('downloading Galaxy');
 	const a = document.createElement('a');
 	document.body.appendChild(a);
 	a.href = canvas.toDataURL('image/png', 1);
 	a.download = 'canvas-image.png';
 	a.click();
 	document.body.removeChild(a);
+	// Add image to Firebase
+	let imgData = canvas.toDataURL('image/png',1);
+
+	docRef.set({
+		galaxy : imgData,
+	}).then(()=>{
+		console.log('image saved!');
+	}).catch((error)=>{
+		console.log('got an error: ', error);
+	})
+	// getData();
 }
+
+// function getData() {
+// 	let surprise = document.getElementById("surprise");
+// 	docRef.onSnapshot(function(doc) {
+// 		if (doc && doc.exists) {
+// 			const myData = doc.data();
+// 			surprise.innerText = myData.galaxy;
+// 		}
+// 	})
+// }
+
+
 //////////////// CANVAS ///////////////////
 
 //////////////// SLIDE-PANEL //////////////
@@ -170,3 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 //////////////// SLIDE-PANEL //////////////
+
+
+
