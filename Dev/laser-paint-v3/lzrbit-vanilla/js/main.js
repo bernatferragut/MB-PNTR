@@ -15,11 +15,7 @@ let firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //   firebase.analytics();
-
-// Firebase constants
-let firestore = firebase.firestore();
-let docRef = firestore.doc('images/imgData');
-
+let galaxyNumber = 0;
 //////////////// FIREBASE //////////////
 
 //////////////// CONTROL PARAMS ///////////
@@ -167,6 +163,7 @@ resizeCanvas();
 
 // save drawing
 function saveDrawing() {
+	galaxyNumber++;
 	// download image
 	console.log('downloading Galaxy');
 	const a = document.createElement('a');
@@ -175,28 +172,46 @@ function saveDrawing() {
 	a.download = 'canvas-image.png';
 	a.click();
 	document.body.removeChild(a);
-	// Add image to Firebase
-	let imgData = canvas.toDataURL('image/png',1);
 
-	docRef.set({
-		galaxy : imgData,
-	}).then(()=>{
-		console.log('image saved!');
-	}).catch((error)=>{
-		console.log('got an error: ', error);
+	////////////// FIREBASE UPLOAD IMAGE //////////////
+	// image BLOB
+	let imgData = dataURLtoBlob(a.href);
+	// Image NAME
+	let imgName = `galaxy${galaxyNumber}`;
+	// Upload image to FIREBASE
+	let storageRef = firebase.storage().ref(`images/${imgName}`);
+	// Upload image to selected storage reference
+	let uploadTask = storageRef.put(imgData);
+	uploadTask.on('state_changed', (snapshot)=> {
+		// observe state chenge events such as progress, pause, resume
+		// get task progress by including the number of bytes uploaded and total number of bytes
+		let progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+		console.log(`upload progress: ${progress} done`);
+	}, function(error){
+		console.log(error.message);
+	}, function(){
+		// handle successful uploads on complete
+		uploadTask.snapshot.ref.getDownloadURL().then( (downloadURL)=> {
+			// get your upload image URL here..p5.BandPass()
+			console.log(downloadURL);
+		})
 	})
-	getData();
 }
 
-function getData() {
-	let surprise = document.getElementById("surprise");
-	docRef.onSnapshot(function(doc) {
-		if (doc && doc.exists) {
-			const myData = doc.data();
-			console.log('data received: ', myData);
-			surprise.innerText = myData.galaxy;
-		}
-	})
+function dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+}
+
+//**blob to dataURL**
+function blobToDataURL(blob, callback) {
+    var a = new FileReader();
+    a.onload = function(e) {callback(e.target.result);}
+    a.readAsDataURL(blob);
 }
 
 
