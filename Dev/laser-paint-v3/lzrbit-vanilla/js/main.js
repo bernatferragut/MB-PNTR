@@ -185,18 +185,19 @@ function saveDrawing() {
 	}).catch((error)=>{
 		console.log('got an error: ', error);
 	})
-	// getData();
+	getData();
 }
 
-// function getData() {
-// 	let surprise = document.getElementById("surprise");
-// 	docRef.onSnapshot(function(doc) {
-// 		if (doc && doc.exists) {
-// 			const myData = doc.data();
-// 			surprise.innerText = myData.galaxy;
-// 		}
-// 	})
-// }
+function getData() {
+	let surprise = document.getElementById("surprise");
+	docRef.onSnapshot(function(doc) {
+		if (doc && doc.exists) {
+			const myData = doc.data();
+			console.log('data received: ', myData);
+			surprise.innerText = myData.galaxy;
+		}
+	})
+}
 
 
 //////////////// CANVAS ///////////////////
