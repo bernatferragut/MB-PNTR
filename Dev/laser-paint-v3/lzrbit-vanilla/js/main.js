@@ -14,8 +14,6 @@ let firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-//   firebase.analytics();
-let galaxyNumber = 0;
 //////////////// FIREBASE //////////////
 
 //////////////// CONTROL PARAMS ///////////
@@ -163,8 +161,7 @@ resizeCanvas();
 
 // save drawing
 function saveDrawing() {
-	galaxyNumber++;
-	// download image
+	////////////// DOWNLOAD IMAGE //////////////
 	console.log('downloading Galaxy');
 	const a = document.createElement('a');
 	document.body.appendChild(a);
@@ -176,8 +173,8 @@ function saveDrawing() {
 	////////////// FIREBASE UPLOAD IMAGE //////////////
 	// image BLOB
 	let imgData = dataURLtoBlob(a.href);
-	// Image NAME
-	let imgName = `galaxy${galaxyNumber}`;
+	// Image NAME + Unique ID number
+	let imgName = `galaxy:${uuidv4()}`;
 	// Upload image to FIREBASE
 	let storageRef = firebase.storage().ref(`images/${imgName}`);
 	// Upload image to selected storage reference
@@ -198,6 +195,7 @@ function saveDrawing() {
 	})
 }
 
+//**dataURL to blob */
 function dataURLtoBlob(dataurl) {
     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
@@ -214,6 +212,13 @@ function blobToDataURL(blob, callback) {
     a.readAsDataURL(blob);
 }
 
+// Unique Id for Firebase Storage
+function uuidv4() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+	  var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+	  return v.toString(16);
+	});
+  }
 
 //////////////// CANVAS ///////////////////
 
