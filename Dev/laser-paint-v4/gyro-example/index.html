@@ -1,0 +1,30 @@
+﻿<script src=gyro.js></script>
+<textarea id=t cols=120 rows=20></textarea>
+<script>
+
+// Update textarea 30 times per second
+setInterval(function(){
+
+t.value =
+
+`orientation = ${gyro.orientation}
+
+alpha = ${print(gyro.alpha)} // ↔ rotate
+beta = ${print(gyro.beta)}  // ↕ look up/down
+gamma = ${print(gyro.gamma)} // ⤹ ⤸ tilt device
+
+x = ${print(gyro.x)}     // front-back
+y = ${print(gyro.y)}     // ↔ left-right
+z = ${print(gyro.z)}     // ↕ up-down
+`;
+
+}, 33);
+
+
+print = function(n){
+  return ((n || 0).toFixed(1)+"     ").slice(0,6);
+}
+
+</script>
+<style>
+textarea { width: 100%; height: 100%; font-size: 10px; }
