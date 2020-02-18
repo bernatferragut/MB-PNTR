@@ -46,11 +46,11 @@ paneDot.addInput(PARAMS, 'dotColor', { label: 'DOT COLOR' });
 paneDot.on('change', (value) => {
 	console.log('dot: ', value);
 	// LET'S PAINT DOTS
-	if(PARAMS.dot===true) {
-		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-		brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
-	}
+	// if(PARAMS.dot===true) {
+	// 	mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+	// 	my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+	// 	brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
+	// }
 });
 
 // TWEAKPANE - INPUT - LINE
@@ -69,13 +69,11 @@ paneLine.addInput(PARAMS, 'lineColor', { label: 'LINE COLOR' });
 paneLine.on('change', (value) => {
 	console.log('line: ', value);
 	// LET'S PAINT LINES
-	if(PARAMS.line===true) {
-		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-		brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
-		// allows to start path from here without jumping
-		// ctx.beginPath();
-	}
+	// if(PARAMS.line===true) {
+	// 	mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+	// 	my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+	// 	brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
+	// }
 });
 
 // TWEAKPANE - MONITOR - ACCELEROMETER
@@ -151,15 +149,28 @@ let pointer = new Brush(ctx1,ctx2);
 	ctx1.globalCompositeOperation = 'lighter';
 	// Drawing
 	if (isPaired) {
-		// nothing drawing
-		// ctx.clearRect(0, 0, w, h);
-		// Drawing Axist
+		// Drawing Axis in ctx2
 		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
 		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-		// Draw axis
 		brush.drawAxis(mx, my, w, h);
-	}
+		// Drawing dots and lines in ctx1
+		if (PARAMS.dot === true) {
+			// Drawing Dot
+			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
 
+			// dot drawing
+		}
+		if (PARAMS.line === true) {
+			// Drawing Line
+			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
+			// allows to start path from here without jumping
+			// ctx.beginPath();
+		} 
+	}
 	// Loop
 	frame = requestAnimationFrame(loop);
 })();
@@ -180,7 +191,7 @@ function saveDrawing() {
 	console.log('downloading Galaxy');
 	const a = document.createElement('a');
 	document.body.appendChild(a);
-	a.href = canvas.toDataURL('image/png', 1);
+	a.href = canvas1.toDataURL('image/png', 1);
 	a.download = 'canvas-image.png';
 	a.click();
 	document.body.removeChild(a);
