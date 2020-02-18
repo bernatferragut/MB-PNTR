@@ -131,17 +131,24 @@ function microbitPairing() {
 //////////////// MICROBIT PAIRING /////////
 
 //////////////// CANVAS ///////////////////
-const canvas = document.querySelector('#canvas');
-const ctx = canvas.getContext('2d');
-let w = (canvas.width = window.innerWidth);
-let h = (canvas.height = window.innerHeight);
-let brush = new Brush(ctx);
+// CTX-1-BACKGROUND
+const canvas1 = document.querySelector('#layer-1');
+const ctx1 = canvas1.getContext('2d');
+// CTX-2-POINTER
+const canvas2 = document.querySelector('#layer-2');
+const ctx2 = canvas2.getContext('2d');
+// SIZING CANVASES
+let w = (canvas1.width = window.innerWidth);
+let h = (canvas1.height = window.innerHeight);
+// CREATING BRUSH AND POINTER
+let brush = new Brush(ctx1,ctx2);
 let frame, mx, my;
+let pointer = new Brush(ctx1,ctx2);
 
 // Animation will be done on the TOP layer ( 2 Canvas )
 (function loop() {
 	// LZR add composite filter
-	ctx.globalCompositeOperation = 'lighter';
+	ctx1.globalCompositeOperation = 'lighter';
 	// Drawing
 	if (isPaired) {
 		// nothing drawing
@@ -160,8 +167,10 @@ let frame, mx, my;
 // resize canvas
 window.addEventListener('resize', resizeCanvas);
 function resizeCanvas() {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas1.width = window.innerWidth;
+	canvas1.height = window.innerHeight;
+	canvas2.width = window.innerWidth;
+	canvas2.height = window.innerHeight;
 }
 resizeCanvas();
 
