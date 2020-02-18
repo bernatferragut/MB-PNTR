@@ -26,7 +26,8 @@ let PARAMS = {
 	lineColor: '#9acd32',
 	dot: false,
 	dotWidth: 0.25,
-	dotColor: '#ff6347'
+	dotColor: '#ff6347',
+	erase: false,
 };
 //////////////// CONTROL PARAMS ///////////
 
@@ -45,12 +46,6 @@ paneDot.addInput(PARAMS, 'dotColor', { label: 'DOT COLOR' });
 // panelDot - CHANGES : PAINT!
 paneDot.on('change', (value) => {
 	console.log('dot: ', value);
-	// LET'S PAINT DOTS
-	// if(PARAMS.dot===true) {
-	// 	mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-	// 	my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-	// 	brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
-	// }
 });
 
 // TWEAKPANE - INPUT - LINE
@@ -68,12 +63,6 @@ paneLine.addInput(PARAMS, 'lineColor', { label: 'LINE COLOR' });
 // panelLine - CHANGES
 paneLine.on('change', (value) => {
 	console.log('line: ', value);
-	// LET'S PAINT LINES
-	// if(PARAMS.line===true) {
-	// 	mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-	// 	my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-	// 	brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
-	// }
 });
 
 // TWEAKPANE - MONITOR - ACCELEROMETER
@@ -81,8 +70,18 @@ const paneAcc = new Tweakpane({
 	container: document.getElementById('acc')
 });
 // paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
-paneAcc.addMonitor(PARAMS, 'x', { label: 'X ACCELERATION' });
-paneAcc.addMonitor(PARAMS, 'y', { label: 'Y ACCELERATION' });
+paneAcc.addMonitor(PARAMS, 'x', { 
+	label: 'GYRO X ',
+	// view: 'graph',
+	// min: -1000,
+	// max: +1000, 
+});
+paneAcc.addMonitor(PARAMS, 'y', { 
+	label: 'GYRO Y ',
+	// view: 'graph',
+	// min: -1000,
+	// max: +1000, 
+});
 
 // panelAcc - CHANGES FROM FIREBASE
 let docRef = firestore.doc("gyroApp/data");
@@ -93,15 +92,25 @@ docRef.onSnapshot((doc)=> {
 	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
 })
 
-// TWEAKPANE - BUTTON SAVE
+// TWEAKPANE - BUTTON RESET
 paneAcc
 	.addButton({
-		title: 'Save Galaxy'
+		title: 'Reset Galaxy'
 	})
 	.on('click', () => {
-		// download the galaxy to your desktop
-		saveDrawing();
+		// erase the galaxy to your desktop
+		eraseGalaxy(ctx1);
 	});
+
+	// TWEAKPANE - BUTTON SAVE
+paneAcc
+.addButton({
+	title: 'Save Galaxy'
+})
+.on('click', () => {
+	// download the galaxy to your desktop
+	saveDrawing();
+});
 //////////////// TWEAKPANE ////////////////
 
 //////////////// MICROBIT PAIRING /////////
@@ -170,6 +179,10 @@ let pointer = new Brush(ctx1,ctx2);
 			// allows to start path from here without jumping
 			// ctx.beginPath();
 		} 
+
+		if (PARAMS.erase === true) {
+			ctx1.clearRect(0, 0, w, h);
+		}
 	}
 	// Loop
 	frame = requestAnimationFrame(loop);
@@ -244,6 +257,10 @@ function uuidv4() {
 	  var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
 	  return v.toString(16);
 	});
+  }
+
+  function eraseGalaxy(ctx1) {
+	PARAMS.erase = true;
   }
 
 //////////////// CANVAS ///////////////////
