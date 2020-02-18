@@ -14,6 +14,7 @@ let firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+let firestore = firebase.firestore();
 //////////////// FIREBASE //////////////
 
 //////////////// CONTROL PARAMS ///////////
@@ -70,7 +71,15 @@ const paneAcc = new Tweakpane({
 // paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
 paneAcc.addMonitor(PARAMS, 'x', { label: 'X ACCELERATION' });
 paneAcc.addMonitor(PARAMS, 'y', { label: 'Y ACCELERATION' });
-// panelAcc - CHANGES
+
+// panelAcc - CHANGES FROM FIREBASE
+let docRef = firestore.doc("gyroApp/data");
+docRef.onSnapshot((doc)=> {
+	const myData = doc.data();
+	console.log( `dot:${myData.dot} dotWidth:${myData.dotWidth} dotColor:${myData.dotColor}`);
+	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
+	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
+})
 
 // TWEAKPANE - BUTTON SAVE
 paneAcc
