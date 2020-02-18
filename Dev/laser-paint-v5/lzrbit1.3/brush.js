@@ -4,7 +4,7 @@ class Brush {
 	constructor(ctx1, ctx2){
 		this.context1 = ctx1;
 		this.context2 = ctx2;
-		this.axisSize = 3;
+		this.axisSize = 2;
 	}
 	// class methods
 	drawLine(mx, my, size, color){
@@ -26,13 +26,13 @@ class Brush {
 	}
 	drawAxis(mx,my,w,h) {
 		// Background Color
-		// this.context.fillStyle = 'black';
-		// this.context.fillRect(0, 0, w , h);
 		ctx2.clearRect(0, 0, w, h);
-		// style
-		this.context2.fillStyle = 'tomato';
-		// line
-		this.context2.fillRect(mx, my, this.axisSize , this.axisSize );
+		// circle
+		ctx2.beginPath();
+		ctx2.arc(mx, my, this.axisSize, 0, 2 * Math.PI, false);
+		ctx2.lineWidth = 1;
+		ctx2.strokeStyle = '#ff6347';
+		ctx2.stroke();
 	}
     // mapping microbit values to screen sizes
     mapValues(n, start1, stop1, start2, stop2) {

@@ -34,15 +34,16 @@ let PARAMS = {
 //////////////// TWEAKPANE ////////////////
 // TWEAKPANE - INPUT - DOT
 const paneDot = new Tweakpane({
-	container: document.getElementById('dot')
+	container: document.getElementById('dot'),
+	title: 'DOT PARAMETERS',
 });
-paneDot.addInput(PARAMS, 'dot', { label: 'DOT' });
+paneDot.addInput(PARAMS, 'dot', { label: 'Dot on/off' });
 paneDot.addInput(PARAMS, 'dotWidth', {
 	min: 0,
 	max: 3,
-	label: 'DOT WIDTH'
+	label: 'Dot width'
 });
-paneDot.addInput(PARAMS, 'dotColor', { label: 'DOT COLOR' });
+paneDot.addInput(PARAMS, 'dotColor', { label: 'Dot color' });
 // panelDot - CHANGES : PAINT!
 paneDot.on('change', (value) => {
 	console.log('dot: ', value);
@@ -50,16 +51,17 @@ paneDot.on('change', (value) => {
 
 // TWEAKPANE - INPUT - LINE
 const paneLine = new Tweakpane({
-	container: document.getElementById('line')
+	container: document.getElementById('line'),
+	title: 'LINE PARAMETERS',
 });
 // console.log(paneLine);
-paneLine.addInput(PARAMS, 'line', { label: 'LINE' });
+paneLine.addInput(PARAMS, 'line', { label: 'Line on/off' });
 paneLine.addInput(PARAMS, 'lineWidth', {
 	min: 0,
 	max: 3,
-	label: 'LINE WIDTH'
+	label: 'Line width'
 });
-paneLine.addInput(PARAMS, 'lineColor', { label: 'LINE COLOR' });
+paneLine.addInput(PARAMS, 'lineColor', { label: 'Line color' });
 // panelLine - CHANGES
 paneLine.on('change', (value) => {
 	console.log('line: ', value);
