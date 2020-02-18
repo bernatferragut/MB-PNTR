@@ -3,7 +3,7 @@ class Brush {
 	// class attributes
 	constructor(ctx){
 		this.context = ctx;
-		this.axisSize = 3;
+		this.axisSize = 1;
 	}
 	// class methods
 	drawLine(mx, my, size, color){
@@ -25,8 +25,9 @@ class Brush {
 	}
 	drawAxis(mx,my,w,h) {
 		// Background Color
-		this.context.fillStyle = 'black';
-		this.context.fillRect(0, 0, w , h);
+		// this.context.fillStyle = 'black';
+		// this.context.fillRect(0, 0, w , h);
+		// ctx.clearRect(0, 0, w, h);
 		// style
 		this.context.fillStyle = 'tomato';
 		// line

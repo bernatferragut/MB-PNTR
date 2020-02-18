@@ -42,9 +42,15 @@ paneDot.addInput(PARAMS, 'dotWidth', {
 	label: 'DOT WIDTH'
 });
 paneDot.addInput(PARAMS, 'dotColor', { label: 'DOT COLOR' });
-// panelDot - CHANGES
+// panelDot - CHANGES : PAINT!
 paneDot.on('change', (value) => {
 	console.log('dot: ', value);
+	// LET'S PAINT DOTS
+	if(PARAMS.dot===true) {
+		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+		brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
+	}
 });
 
 // TWEAKPANE - INPUT - LINE
@@ -62,6 +68,14 @@ paneLine.addInput(PARAMS, 'lineColor', { label: 'LINE COLOR' });
 // panelLine - CHANGES
 paneLine.on('change', (value) => {
 	console.log('line: ', value);
+	// LET'S PAINT LINES
+	if(PARAMS.line===true) {
+		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+		brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
+		// allows to start path from here without jumping
+		// ctx.beginPath();
+	}
 });
 
 // TWEAKPANE - MONITOR - ACCELEROMETER
@@ -124,36 +138,19 @@ let h = (canvas.height = window.innerHeight);
 let brush = new Brush(ctx);
 let frame, mx, my;
 
-// Animation
+// Animation will be done on the TOP layer ( 2 Canvas )
 (function loop() {
 	// LZR add composite filter
 	ctx.globalCompositeOperation = 'lighter';
-	console.log;
 	// Drawing
 	if (isPaired) {
-		if (PARAMS.dot === true) {
-			// Drawing Dot
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-			brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
-
-			// dot drawing
-		} else if (PARAMS.line === true) {
-			// Drawing Line
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-			brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
-			// allows to start path from here without jumping
-			// ctx.beginPath();
-		} else {
-			// nothing drawing
-			ctx.clearRect(0, 0, w, h);
-			// Drawing Axist
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
-			// Draw axis
-			brush.drawAxis(mx, my, w, h);
-		}
+		// nothing drawing
+		// ctx.clearRect(0, 0, w, h);
+		// Drawing Axist
+		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
+		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+		// Draw axis
+		brush.drawAxis(mx, my, w, h);
 	}
 
 	// Loop
