@@ -182,6 +182,7 @@ let pointer = new Brush(ctx1,ctx2);
 
 		if (PARAMS.erase === true) {
 			ctx1.clearRect(0, 0, w, h);
+			PARAMS.erase = false;
 		}
 	}
 	// Loop
