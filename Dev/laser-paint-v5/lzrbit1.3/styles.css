@@ -20,7 +20,7 @@
     --tp-button-foreground-color: black;
     
     /* Folder colors */
-    --tp-folder-background-color: hsl(0, 0%, 10%);
+    --tp-folder-background-color: black;
     --tp-folder-background-color-active: hsl(0, 0%, 25%);
     --tp-folder-background-color-focus: hsl(0, 0%, 20%);
     --tp-folder-background-color-hover: hsl(0, 0%, 15%);

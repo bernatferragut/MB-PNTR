@@ -97,7 +97,7 @@ docRef.onSnapshot((doc)=> {
 // TWEAKPANE - BUTTON RESET
 paneAcc
 	.addButton({
-		title: 'Reset Galaxy'
+		title: 'R E S E T'
 	})
 	.on('click', () => {
 		// erase the galaxy to your desktop
@@ -107,7 +107,7 @@ paneAcc
 	// TWEAKPANE - BUTTON SAVE
 paneAcc
 .addButton({
-	title: 'Save Galaxy'
+	title: 'S A V E'
 })
 .on('click', () => {
 	// download the galaxy to your desktop
