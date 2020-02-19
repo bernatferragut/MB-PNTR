@@ -210,7 +210,7 @@ function saveDrawing() {
 	a.href = canvas1.toDataURL('image/png', 1);
 	a.download = 'canvas-image.png';
 	a.click();
-	// document.body.removeChild(a);
+	document.body.removeChild(a);
 	////////////// FIREBASE UPLOAD IMAGE //////////////
 	// image BLOB
 	let imgData = dataURLtoBlob(a.href);
