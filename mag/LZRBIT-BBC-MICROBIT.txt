@@ -1,0 +1,56 @@
+
+WHAT IS THE LZRBIT?
+LZRBIT is a drawing-app designed to create web-art using the BBC Microbit microcontroller as a joystick.
+
+Pieces of Art are created by using the Microbit accelerometer BLE service - Bluetooth Low Energy- paired with the browser.
+
+After teaching kids how to use the Microbit I tried to answer the following question?
+
+What sort of application or ideas would develop an artist with a Microbit?
+
+As a media artist I thought to create a very simple and minimal app where we could 'feel' the Microbit gyroscope and use as an advantage, the discreet packaged information, the Bluetooth Low Energy sends to create an 'electric' style only possible through this sort of radio communication.
+
+Although simple in its design, the Microbit/Chrome browser experience becomes a new artistic medium where 'Galaxies' can be painted with ease. Also, because of the high sensitivity of the Microbit on your hand it becomes an exercise of relaxation and concentration if ones want to be able to paint a 'realistic' galaxy. 
+
+LZRBIT becomes a unique tool of expression offering to the media artist a new and distinct style.
+
+The creation process allowed me to learn a lot about Browsers, Bluetooth Communication, the Internet of Things and Databases. A fully complete learning experience inspired by this tiny device we all love and appreciate as an amazing tool to learn and teach new technologies.
+
+INSTRUCTIONS
+>> Get a BBC Microbit!!!
+1. Use ONLY with Google Chrome
+2. Download this .hex file to your Microbit.
+3. Use the PAIR MICROBIT button for pairing devices.
+4. The Microbit 'flat' on one of both hands aligns the brush at the center of the screen (x=0, y=0).
+5. Use the CONTROLS PANEL at the top of the canvas to modify the size and color of the different variables.
+6. Press the POINT checkbox to draw points, and adjust its parameters.
+7. Press the LINE checkbox to draw lines, and adjust its parameters.
+8. Use the Microbit x,y,z axis to draw on the canvas by rotating them.
+9. Use the RESET button to reset your design.
+10. Use the SAVE button to save your design.
+
+TRY IT ONLINE HERE.
+https://youthful-kepler-96ccd7.netlify.com/
+
+Made with Love using pure HTML/CSS/Vanilla JS.
+
+IMPROVEMENTS FOR FUTURE VERSIONS
+In future versions we want to add other sensors to drive the drawing app, like:
+
+1.Mobile Telephone Gyroscope Connection ( Two Apps connected in Realtime)
+
+2 NextMind API - A none invasive human brain interface (…)
+
+HOW CAN I HELP?
+Come on over to the LZRBIT github repo to help and improve it.
+
+LZRBIT GITHUB REPO
+https://github.com/bernatferragut/lzrbit/blob/master/README.md
+
+AUTHOR
+Bernat Ferragut is a Canadian-Spanish Media Artist based in Montreal. 
+He loves to experiment and develop with new technologies and is working for a non-profit organization whose objectives are to bring algorithmic literacy to all young Canadians.
+
+For more information please visit:
+http://bernatferragut.com/
+
