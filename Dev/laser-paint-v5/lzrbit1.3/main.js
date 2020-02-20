@@ -154,6 +154,12 @@ let brush = new Brush(ctx1,ctx2);
 let frame, mx, my;
 let pointer = new Brush(ctx1,ctx2);
 
+// SAVING AN IMAGE TO AVOID WEIRD BUG LATER IN MAIN SAVE ***
+let a = document.createElement('a');
+document.body.appendChild(a);
+a.href = canvas1.toDataURL('image/png');
+a.download = 'canvas-image.png';
+
 // Animation will be done on the TOP layer ( 2 Canvas )
 (function loop() {
 	// LZR add composite filter
@@ -201,7 +207,7 @@ function resizeCanvas() {
 }
 resizeCanvas();
 
-// save drawing
+// save drawing ***
 function saveDrawing() {
 	////////////// DOWNLOAD IMAGE //////////////
 	console.log('downloading Galaxy');
