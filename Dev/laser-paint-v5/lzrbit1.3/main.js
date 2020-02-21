@@ -154,10 +154,7 @@ let brush = new Brush(ctx1,ctx2);
 let frame, mx, my;
 let pointer = new Brush(ctx1,ctx2);
 ////////////// DOWNLOAD IMAGE PREP.//////////////
-console.log('downloading Galaxy');
-let a = document.createElement('a');
-document.body.appendChild(a);
-a.href = canvas1.toDataURL('image/png');
+
 
 // Animation will be done on the TOP layer ( 2 Canvas )
 (function loop() {
@@ -209,6 +206,10 @@ resizeCanvas();
 // save drawing ***
 function saveDrawing() {
 	////////////// DOWNLOAD IMAGE //////////////
+	console.log('downloading Galaxy');
+	let a = document.createElement('a');
+	document.body.appendChild(a);
+	a.href = canvas1.toDataURL('image/png');
 	a.download = 'canvas-image.png';
 	a.click();
 	// document.body.removeChild(a);
