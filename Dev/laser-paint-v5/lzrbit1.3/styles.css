@@ -141,8 +141,8 @@ a:hover {
   width: 95vw;
   /* GRID */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto 70vh auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto 70vh auto;
   /* ITEMS INSIDE */
   justify-content: center;
   align-content: center;
@@ -154,15 +154,8 @@ a:hover {
     padding-top: 10px;
 }
 
-.grid-item-3 {
-  text-align: right;
-  position: relative;
-  font-size: 10px;
-  padding: 20px;
-  padding-top: 10px;
-}
-
 .grid-item-4 {
+  text-align: right;
   position: relative;
   font-size: 10px;
   padding: 20px;
@@ -184,14 +177,27 @@ a:hover {
 }
 
 .grid-item-7 {
-  grid-column: span 3;
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 10px;
+}
+
+.grid-item-8 {
+  position: relative;
+  font-size: 10px;
+  padding: 20px;
+  padding-top: 10px;
+}
+.grid-item-9 {
+  grid-column: span 4;
   position: relative;
   font-size: 10px;
   height: auto;
 }
 
-.grid-item-8 {
-  grid-column: span 3;
+.grid-item-10 {
+  grid-column: span 4;
   position: relative;
   padding: 20px;
   color: var(--main-text-color2);

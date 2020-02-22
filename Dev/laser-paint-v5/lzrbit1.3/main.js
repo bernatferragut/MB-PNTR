@@ -28,10 +28,31 @@ let PARAMS = {
 	dotWidth: 0.25,
 	dotColor: '#ff6347',
 	erase: false,
+	gridWidth: 1024,
+	gridHeight: 1024,
 };
 //////////////// CONTROL PARAMS ///////////
 
 //////////////// TWEAKPANE ////////////////
+// TWEAKPANE - INPUT - GRID
+const paneGrid = new Tweakpane({
+	container: document.getElementById('grid'),
+	title: 'SCALE GRID',
+});
+paneGrid.addSeparator();
+paneGrid.addInput(PARAMS, 'gridWidth', {
+	min: 512,
+	max: 1024,
+	label: 'Grid width'
+});
+paneGrid.addSeparator();
+paneGrid.addInput(PARAMS, 'gridHeight', {
+	min: 512,
+	max: 1024,
+	label: 'Grid height'
+});
+paneGrid.addSeparator();
+
 // TWEAKPANE - INPUT - DOT
 const paneDot = new Tweakpane({
 	container: document.getElementById('dot'),
@@ -67,35 +88,26 @@ paneLine.on('change', (value) => {
 	console.log('line: ', value);
 });
 
-// TWEAKPANE - MONITOR - ACCELEROMETER
-const paneAcc = new Tweakpane({
-	container: document.getElementById('acc')
+// TWEAKPANE - MONITOR - GYROSCOPE
+const paneGyro = new Tweakpane({
+	container: document.getElementById('save')
 });
 // paneAcc.addInput(PARAMS, 'acc',{ label: 'ACCEL (X,Y)'});
-paneAcc.addMonitor(PARAMS, 'x', { 
+paneGyro.addMonitor(PARAMS, 'x', { 
 	label: 'GYRO X ',
 	// view: 'graph',
 	// min: -1000,
 	// max: +1000, 
 });
-paneAcc.addMonitor(PARAMS, 'y', { 
+paneGyro.addMonitor(PARAMS, 'y', { 
 	label: 'GYRO Y ',
 	// view: 'graph',
 	// min: -1000,
 	// max: +1000, 
 });
 
-// panelAcc - CHANGES FROM FIREBASE
-let docRef = firestore.doc("gyroApp/data");
-docRef.onSnapshot((doc)=> {
-	const myData = doc.data();
-	console.log( `dot:${myData.dot} dotWidth:${myData.dotWidth} dotColor:${myData.dotColor}`);
-	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
-	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
-})
-
 // TWEAKPANE - BUTTON RESET
-paneAcc
+paneGyro
 	.addButton({
 		title: 'R E S E T'
 	})
@@ -104,15 +116,24 @@ paneAcc
 		eraseGalaxy(ctx1);
 	});
 
-	// TWEAKPANE - BUTTON SAVE
-paneAcc
-.addButton({
-	title: 'S A V E'
-})
-.on('click', () => {
-	// download the galaxy to your desktop
-	saveDrawing();
+// TWEAKPANE - BUTTON SAVE
+paneGyro
+	.addButton({
+		title: 'S A V E'
+	})
+	.on('click', () => {
+		// download the galaxy to your desktop
+		saveDrawing();
 });
+
+// paneGyro - CHANGES FROM FIREBASE
+let docRef = firestore.doc("gyroApp/data");
+docRef.onSnapshot((doc)=> {
+	const myData = doc.data();
+	console.log( `dot:${myData.dot} dotWidth:${myData.dotWidth} dotColor:${myData.dotColor}`);
+	console.log( `x:${myData.x} y:${myData.y} z:${myData.z} `);
+	console.log( `line:${myData.dot} lineWidth:${myData.lineWidth} lineColor:${myData.lineColor}`);
+})
 //////////////// TWEAKPANE ////////////////
 
 //////////////// MICROBIT PAIRING /////////
@@ -163,22 +184,22 @@ let pointer = new Brush(ctx1,ctx2);
 	// Drawing
 	if (isPaired) {
 		// Drawing Axis in ctx2
-		mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-		my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+		mx = brush.mapValues(PARAMS.x, -PARAMS.gridWidth, PARAMS.gridWidth, 0, w);
+		my = brush.mapValues(PARAMS.y, -PARAMS.gridHeight, PARAMS.gridHeight, 0, h);
 		brush.drawAxis(mx, my, w, h);
 		// Drawing dots and lines in ctx1
 		if (PARAMS.dot === true) {
 			// Drawing Dot
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			mx = brush.mapValues(PARAMS.x, -PARAMS.gridWidth, PARAMS.gridWidth, 0, w);
+			my = brush.mapValues(PARAMS.y, -PARAMS.gridHeight, PARAMS.gridHeight, 0, h);
 			brush.drawDot(mx, my, PARAMS.dotWidth, PARAMS.dotColor);
 
 			// dot drawing
 		}
 		if (PARAMS.line === true) {
 			// Drawing Line
-			mx = brush.mapValues(PARAMS.x, -1024, 1024, 0, w);
-			my = brush.mapValues(PARAMS.y, -1024, 1024, 0, h);
+			mx = brush.mapValues(PARAMS.x, -PARAMS.gridWidth, PARAMS.gridWidth, 0, w);
+			my = brush.mapValues(PARAMS.y, -PARAMS.gridHeight, PARAMS.gridHeight, 0, h);
 			brush.drawLine(mx, my, PARAMS.lineWidth, PARAMS.lineColor);
 			// allows to start path from here without jumping
 			// ctx.beginPath();
