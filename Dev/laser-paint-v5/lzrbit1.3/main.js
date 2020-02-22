@@ -208,7 +208,7 @@ function saveDrawing() {
 	////////////// DOWNLOAD IMAGE //////////////
 	console.log('downloading Galaxy');
 	let a = document.createElement('a');
-	document.body.appendChild(a);
+	// document.body.appendChild(a);
 	a.href = canvas1.toDataURL('image/png');
 	a.download = 'canvas-image.png';
 	a.click();

@@ -27,9 +27,15 @@ class Brush {
 	drawAxis(mx,my,w,h) {
 		// Background Color
 		ctx2.clearRect(0, 0, w, h);
-		// circle
+		// circle 1
 		ctx2.beginPath();
 		ctx2.arc(mx, my, this.axisSize, 0, 2 * Math.PI, false);
+		ctx2.lineWidth = 1;
+		ctx2.strokeStyle = 'yellowgreen';
+		ctx2.stroke();
+		// circle 2
+		ctx2.beginPath();
+		ctx2.arc(mx, my, this.axisSize*4, 0, 2 * Math.PI, false);
 		ctx2.lineWidth = 1;
 		ctx2.strokeStyle = '#ff6347';
 		ctx2.stroke();
