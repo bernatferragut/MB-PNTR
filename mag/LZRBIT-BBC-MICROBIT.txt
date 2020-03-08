@@ -30,7 +30,7 @@ INSTRUCTIONS
 10. Use the SAVE button to save your design.
 
 TRY IT ONLINE HERE.
-https://youthful-kepler-96ccd7.netlify.com/
+https://lzrbit3.netlify.com/
 
 Made with Love using pure HTML/CSS/Vanilla JS.
 
@@ -45,7 +45,7 @@ HOW CAN I HELP?
 Come on over to the LZRBIT github repo to help and improve it.
 
 LZRBIT GITHUB REPO
-https://github.com/bernatferragut/lzrbit/blob/master/README.md
+https://github.com/bernatferragut/lzrbit1.3/blob/master/README.md
 
 AUTHOR
 Bernat Ferragut is a Canadian-Spanish Media Artist based in Montreal. 
